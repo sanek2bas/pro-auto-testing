@@ -1,6 +1,4 @@
-﻿using System.Reflection;
-
-namespace LogAn.UnitTests;
+﻿namespace LogAn.UnitTests;
 
 public class LogAnalyzerTests
 {
@@ -9,6 +7,6 @@ public class LogAnalyzerTests
     {
         LogAnalyzer analyzer = new LogAnalyzer();
         bool result = analyzer.IsValidLogFileName("lewithbadextension.foo");
-        
+        Assert.Equal(result, false);
     }
 }
