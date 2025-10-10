@@ -1,2 +1,3 @@
 At first sight methods [SetUp] and [TearDown] seem like good idea. But in practice when there are too many tests, it becomes diffucult to read.
-Therefore, factory methods should be used to initialize test instance. 
+Therefore, factory methods should be used to initialize test instance. The cleaning method is needed for singleton class or integration tests.
+Integration tests should be written in separate project.
