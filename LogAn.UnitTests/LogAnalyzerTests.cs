@@ -47,12 +47,28 @@ public class LogAnalyzerTests
     [Theory]
     [InlineData("filewithgoodextension.SLF", true)]
     [InlineData("filewithgoodextension.slf", true)]
-    [InlineData("filewithbadextension.foo",false)]
+    [InlineData("filewithbadextension.foo", false)]
     public void IsValidLogFileName_VariousExtensions_ChecksThem(string file, bool expected)
     {
         LogAnalyzer analyzer = new LogAnalyzer();
         bool result = analyzer.IsValidLogFileName(file);
-        
+
         Assert.Equal(expected, result);
+    }
+
+    [Fact]
+    public void IsValidLogFileName_EmptyFileName_Throws()
+    {
+        LogAnalyzer la = MakeAnalyzer();
+
+        var ex = Assert.Throws<ArgumentException>(
+            () => la.IsValidLogFileName(string.Empty));
+
+        Assert.Contains("filename has to be provided", ex.Message);
+    }
+
+    private LogAnalyzer MakeAnalyzer()
+    {
+        return new LogAnalyzer();
     }
 }
