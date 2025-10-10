@@ -1,0 +1,2 @@
+At first sight methods [SetUp] and [TearDown] seem like good idea. But in practice when there are too many tests, it becomes diffucult to read.
+Therefore, factory methods should be used to initialize test instance. 
