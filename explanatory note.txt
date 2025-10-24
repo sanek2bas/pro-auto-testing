@@ -2,7 +2,6 @@ At first sight methods [SetUp] and [TearDown] seem like good idea. But in practi
 Therefore, factory methods should be used to initialize test instance. The cleaning method is needed for singleton class or integration tests.
 Integration tests should be written in separate project.
 
-
 All the tests and forms in LogAn.UnitTests use a style that differs from the "standard" code. The test title can be very long, 
 but underlining helps me remember to include all the important elements. Additionally, the "preparation," "action," and
 "statement" sections are separated by a blank line. This helps you read the tests much faster and find errors.

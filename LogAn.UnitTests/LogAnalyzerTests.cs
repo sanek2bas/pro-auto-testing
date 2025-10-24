@@ -61,10 +61,28 @@ public class LogAnalyzerTests
     {
         LogAnalyzer la = MakeAnalyzer();
 
-        var ex = Assert.Throws<ArgumentException>(
-            () => la.IsValidLogFileName(string.Empty));
+        var ex = Assert.Throws<ArgumentException>(() => 
+            la.IsValidLogFileName(string.Empty));
 
         Assert.Contains("filename has to be provided", ex.Message);
+    }
+
+    [Fact(Skip = "there is an error")]
+    public void IsValidFileName_ValidFile_ReturnsTrue()
+    {
+        /// ...
+    }
+
+    [Theory]
+    [InlineData("badfile.foo", false)]
+    [InlineData("goodfile.foo", true)]
+    public void IsValidFileName_WhenCalled_ChangesWasLastFileNameValid(string file, bool expected)
+    {
+        LogAnalyzer la = MakeAnalyzer();
+
+        la.IsValidLogFileName(file);
+
+        Assert.Equal(expected, la.WasLastFileNameValid);
     }
 
     private LogAnalyzer MakeAnalyzer()
