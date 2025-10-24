@@ -12,7 +12,7 @@
 
         [Fact]
         public void Add_WhenCalled_ChangeSum()
-        {
+        { 
             MemCalculator calc = MakeCalc();
 
             calc.Add(1);
