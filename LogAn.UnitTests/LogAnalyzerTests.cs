@@ -75,7 +75,7 @@ public class LogAnalyzerTests
 
     [Theory]
     [InlineData("badfile.foo", false)]
-    [InlineData("goodfile.foo", true)]
+    [InlineData("goodfile.slf", true)]
     public void IsValidFileName_WhenCalled_ChangesWasLastFileNameValid(string file, bool expected)
     {
         LogAnalyzer la = MakeAnalyzer();
