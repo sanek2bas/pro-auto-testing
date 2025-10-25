@@ -6,6 +6,10 @@ All the tests and forms in LogAn.UnitTests use a style that differs from the "st
 but underlining helps me remember to include all the important elements. Additionally, the "preparation," "action," and
 "statement" sections are separated by a blank line. This helps you read the tests much faster and find errors.
 
+SimpleLogAnalyzerTests - the verification of the simplest type of result produced by a unit of work: the reurn value.
+In other cases we consider the results of the another type are considered: a change in the state of the system, it's 
+necessary to verify that the behaviour of the system
+
 State-based testing (also called state verification) establishes the correct operation of a method during the course of an investigation,
 changing the state of the system under test and its interacting components (dependencies) after the method's execution. If the system behaves
 exactly as before, the either its state has not changed or there is an error. 

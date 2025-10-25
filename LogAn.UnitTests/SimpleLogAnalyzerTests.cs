@@ -1,11 +1,11 @@
 ﻿namespace LogAn.UnitTests;
 
-public class LogAnalyzerTests
+public class SimpleLogAnalyzerTests
 {
     [Fact]
     public void IsValidLogFileName_BadExtension_ReturnFalse()
     {
-        LogAnalyzer analyzer = new LogAnalyzer();
+        SimpleLogAnalyzer analyzer = new SimpleLogAnalyzer();
         bool result =
             analyzer.IsValidLogFileName("filewithbadextension.foo");
 
@@ -15,7 +15,7 @@ public class LogAnalyzerTests
     [Fact]
     public void IsValidLogFileName_GoodExtensionLowercase_ReturnsTrue()
     {
-        LogAnalyzer analyzer = new LogAnalyzer();
+        SimpleLogAnalyzer analyzer = new SimpleLogAnalyzer();
         bool result =
             analyzer.IsValidLogFileName("filewithgoodextension.slf");
 
@@ -25,7 +25,7 @@ public class LogAnalyzerTests
     [Fact]
     public void IsValidLogFileName_GoodExtensionUppercase_ReturnsTrue()
     {
-        LogAnalyzer analyzer = new LogAnalyzer();
+        SimpleLogAnalyzer analyzer = new SimpleLogAnalyzer();
         bool result = analyzer.IsValidLogFileName("filewithgoodextension.SLF");
 
         Assert.True(result);
@@ -37,7 +37,7 @@ public class LogAnalyzerTests
     [InlineData("filewithgoodextension.SLF")]
     public void IsValidLogFileName_ValidExtensions_ReturnsTrue(string fileName)
     {
-        LogAnalyzer analyzer = new LogAnalyzer();
+        SimpleLogAnalyzer analyzer = new SimpleLogAnalyzer();
         bool result = analyzer.IsValidLogFileName(fileName);
 
         Assert.True(result);
@@ -50,7 +50,7 @@ public class LogAnalyzerTests
     [InlineData("filewithbadextension.foo", false)]
     public void IsValidLogFileName_VariousExtensions_ChecksThem(string file, bool expected)
     {
-        LogAnalyzer analyzer = new LogAnalyzer();
+        SimpleLogAnalyzer analyzer = new SimpleLogAnalyzer();
         bool result = analyzer.IsValidLogFileName(file);
 
         Assert.Equal(expected, result);
@@ -59,7 +59,7 @@ public class LogAnalyzerTests
     [Fact]
     public void IsValidLogFileName_EmptyFileName_Throws()
     {
-        LogAnalyzer la = MakeAnalyzer();
+        SimpleLogAnalyzer la = MakeAnalyzer();
 
         var ex = Assert.Throws<ArgumentException>(() => 
             la.IsValidLogFileName(string.Empty));
@@ -78,15 +78,15 @@ public class LogAnalyzerTests
     [InlineData("goodfile.slf", true)]
     public void IsValidFileName_WhenCalled_ChangesWasLastFileNameValid(string file, bool expected)
     {
-        LogAnalyzer la = MakeAnalyzer();
+        SimpleLogAnalyzer la = MakeAnalyzer();
 
         la.IsValidLogFileName(file);
 
         Assert.Equal(expected, la.WasLastFileNameValid);
     }
 
-    private LogAnalyzer MakeAnalyzer()
+    private SimpleLogAnalyzer MakeAnalyzer()
     {
-        return new LogAnalyzer();
+        return new SimpleLogAnalyzer();
     }
 }

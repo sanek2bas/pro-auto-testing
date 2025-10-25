@@ -1,6 +1,6 @@
 ﻿namespace LogAn;
 
-public class LogAnalyzer
+public class SimpleLogAnalyzer
 {
     public bool WasLastFileNameValid { get; set; }
 
