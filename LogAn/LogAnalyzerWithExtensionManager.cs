@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace LogAn
 {
-    public class DifficultLogAnalyzer
+    public class LogAnalyzerWithExtensionManager
     {
         private IExtensionManager manager;
 
-        public DifficultLogAnalyzer(IExtensionManager mgr)
+        public LogAnalyzerWithExtensionManager(IExtensionManager mgr)
         {
             manager = mgr;
         }

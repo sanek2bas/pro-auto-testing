@@ -1,6 +1,6 @@
 ﻿namespace LogAn.UnitTests
 {
-    public class DifficultLogAnalyzerTests
+    public class LogAnalyzerWithExtensionManagerTests
     {
         [Fact]
         public void IsValidFileName_NameSupportedExtension_ReturnsTrue()
@@ -9,8 +9,8 @@
                 new FakeExtensionManager();
             myFakeManager.WillBeValid = true;
 
-            DifficultLogAnalyzer log = 
-                new DifficultLogAnalyzer(myFakeManager);
+            LogAnalyzerWithExtensionManager log = 
+                new LogAnalyzerWithExtensionManager(myFakeManager);
 
             bool result = log.IsValidLogFileName("short.ext");
             Assert.True(result);
@@ -24,8 +24,8 @@
             string exMessage = "it's a fake copy";
             myFakeManager.WillThrow = new Exception(exMessage);
 
-            DifficultLogAnalyzer log =
-                new DifficultLogAnalyzer(myFakeManager);
+            LogAnalyzerWithExtensionManager log =
+                new LogAnalyzerWithExtensionManager(myFakeManager);
 
             bool result;
             string message = string.Empty;
