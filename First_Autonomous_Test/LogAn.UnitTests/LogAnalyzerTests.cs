@@ -5,10 +5,14 @@ public class LogAnalyzerTests
     [Fact]
     public void IsValidLogFileName_BadExtension_ReturnFalse()
     {
+        //Arrange
         LogAnalyzer analyzer = new LogAnalyzer();
+        
+        //Act
         bool result =
             analyzer.IsValidLogFileName("filewithbadextension.foo");
 
+        //Assert
         Assert.False(result);
     }
 
@@ -23,7 +27,7 @@ public class LogAnalyzerTests
     }
     
     [Fact]
-    public void IsValidLogFileName_GoodExtensionUppercase_ReturnsTrue()
+    public void IsValidLogFileName_GoodExtensionUpperCase_ReturnsTrue()
     {
         LogAnalyzer analyzer = new LogAnalyzer();
         bool result = analyzer.IsValidLogFileName("filewithgoodextension.SLF");
@@ -38,6 +42,7 @@ public class LogAnalyzerTests
     public void IsValidLogFileName_ValidExtensions_ReturnsTrue(string fileName)
     {
         LogAnalyzer analyzer = new LogAnalyzer();
+
         bool result = analyzer.IsValidLogFileName(fileName);
 
         Assert.True(result);
@@ -61,12 +66,13 @@ public class LogAnalyzerTests
     {
         LogAnalyzer la = MakeAnalyzer();
 
-        var ex = Assert.Throws<ArgumentException>(() => 
-            la.IsValidLogFileName(string.Empty));
+        var ex = Assert.Throws<ArgumentException>(
+            () => la.IsValidLogFileName(string.Empty));
 
         Assert.Contains("filename has to be provided", ex.Message);
     }
 
+    // an example of skipping an irrelevant test
     [Fact(Skip = "there is an error")]
     public void IsValidFileName_ValidFile_ReturnsTrue()
     {
