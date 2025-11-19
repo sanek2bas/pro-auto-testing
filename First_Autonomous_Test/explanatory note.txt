@@ -1,0 +1,19 @@
+At first sight methods [SetUp] and [TearDown] seem like good idea. But in practice when there are too many tests, 
+it becomes diffucult to read. Therefore, factory methods should be used to initialize test instance. The cleaning 
+method is needed for singleton class or integration tests. Integration tests should be written in separate project.
+
+All the tests and forms in LogAn.UnitTests use a style that differs from the "standard" code. The test title can be very long, 
+but underlining helps me remember to include all the important elements. Additionally, the "preparation," "action," and
+"statement" sections are separated by a blank line. This helps you read the tests much faster and find errors.
+
+LogAn.UnitTests.SimpleLogAnalyzerTests - the verification of the simplest type of result produced by a unit of work: 
+the reurn value. In other cases we consider the results of the another type are considered: a change in the state of the system, 
+it's necessary to verify that the behaviour of the system.
+
+State-based testing (also called state verification) establishes the correct operation of a method during the course 
+of an investigation, changing the state of the system under test and its interacting components (dependencies) after 
+the method's execution. If the system behaves exactly as before, the either its state has not changed or there is an error. 
+
+LogAn.UnitTests.DifficultLogAnalyzerTests.FakeExtensionManager - the word "fake" means that an object looks like another object 
+but can be used as a dummy or stub. By saying that an object or variable is a fake, we defer the decision about what to call 
+this fake object and avoid the confusion that might arise of we called it a dummy dispatcher or stub dispatcher.
