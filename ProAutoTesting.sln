@@ -2,9 +2,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.2.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogAn", "LogAn\LogAn.csproj", "{3D798FD1-E847-DA71-C05F-F1E3686C1A97}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "First_Autonomous_Test", "First_Autonomous_Test", "{F165E8B4-F48B-AD39-66D7-A54EE98E9231}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogAn.UnitTests", "LogAn.UnitTests\LogAn.UnitTests.csproj", "{14EDC216-7FE3-9911-561E-06BEF29629A1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogAn", "First_Autonomous_Test\LogAn\LogAn.csproj", "{3D798FD1-E847-DA71-C05F-F1E3686C1A97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogAn.UnitTests", "First_Autonomous_Test\LogAn.UnitTests\LogAn.UnitTests.csproj", "{14EDC216-7FE3-9911-561E-06BEF29629A1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
