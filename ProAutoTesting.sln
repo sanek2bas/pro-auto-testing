@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 18
-VisualStudioVersion = 18.0.11217.181 d18.0
+VisualStudioVersion = 18.0.11217.181
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "First_Autonomous_Test", "First_Autonomous_Test", "{F165E8B4-F48B-AD39-66D7-A54EE98E9231}"
 	ProjectSection(SolutionItems) = preProject
@@ -10,6 +10,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogAn", "First_Autonomous_Test\LogAn\LogAn.csproj", "{D81E65A5-5E53-DE46-5484-7C25269A4862}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogAn.UnitTests", "First_Autonomous_Test\LogAn.UnitTests\LogAn.UnitTests.csproj", "{4DFE409D-3CE2-A703-2CF5-4A7B3CE2C5E7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Four_Aspects_Of_Good_Unit_Tests", "Four_Aspects_Of_Good_Unit_Tests", "{77CEB561-7E68-4E0B-AA00-DB8727C6A863}"
+	ProjectSection(SolutionItems) = preProject
+		First_Autonomous_Test\explanatory note.txt = First_Autonomous_Test\explanatory note.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
