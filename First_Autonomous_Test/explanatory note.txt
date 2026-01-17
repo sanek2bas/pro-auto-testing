@@ -3,3 +3,10 @@ Good unit-test should have the following four attriburtes:
 - resistance to refactoring;
 - quick feedback
 - easy for support.
+
+The First Aspect: Bug Protection
+Typically, such errors occur after changes are made to the code—usually after writing a new function.
+As a general rule, the more tests a code runs, the higher the probability of introducing 
+a bug (assuming there is one, of course). Of course, a test should also have a relevant
+set of assertions; simply selecting the code is sufficient.
+To maximize the bug protection metric, a test should execute the maximum amount of code possible.
