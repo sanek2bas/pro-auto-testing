@@ -10,3 +10,20 @@ As a general rule, the more tests a code runs, the higher the probability of int
 a bug (assuming there is one, of course). Of course, a test should also have a relevant
 set of assertions; simply selecting the code is sufficient.
 To maximize the bug protection metric, a test should execute the maximum amount of code possible.
+
+The Second Aspect: Resilience to Refactoring
+Refactoring is a modification of existing code without changing its observable behavior.
+False alarm is test indicates that functionality doesn't work, when in reality
+everything works as expected. Such false pisitives typically occur during code
+refactoring, when you change the implementation but leave the applications's
+behaviour unchanged. Hence the name of this attribute: refactoring resistance.
+To evaluate a test's refactoring resistance, look at how many false positives
+it producesl - the fewer, the better.
+The more closely a test is tied to the implmentation details of the system
+under test (SUT), the more false positives it generates. The only way to
+reduce the number of false positives is to decouple the test from the 
+implementation details of the SUT. A test should verify the end result—
+the observable behavior of the SUT, not the actions it takes to achieve that result. 
+Tests should approach the SUT from the end user's perspective and verify 
+only the result that is meaningful to that user. 
+Everything else should be discarded.
