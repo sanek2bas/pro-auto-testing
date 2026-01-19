@@ -27,3 +27,14 @@ the observable behavior of the SUT, not the actions it takes to achieve that res
 Tests should approach the SUT from the end user's perspective and verify 
 only the result that is meaningful to that user. 
 Everything else should be discarded.
+
+MessageRenderer_Uses_Correct_Sub_Renderers - test checks that all subgenerators
+are of the expected type and are present in the correct order. Any attempt at 
+this kind of test will fail, even if the final result remains unchanged.
+This is because the test is tied to the implementation dedtails of the system
+under test, not to the output it generates.
+
+Rendering_A_Message - this test treats the MessageRenderer as a "black box" and 
+is only interested in its observable behavior. This makes the test much more resilient 
+to refactoring—it doesn't care what changes are made to the system under test, 
+as long as the resulting HTML remains unchanged.
