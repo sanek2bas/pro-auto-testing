@@ -38,3 +38,16 @@ Rendering_A_Message - this test treats the MessageRenderer as a "black box" and
 is only interested in its observable behavior. This makes the test much more resilient 
 to refactoring—it doesn't care what changes are made to the system under test, 
 as long as the resulting HTML remains unchanged.
+
+The Third Aspect: Fast Feedback
+Quickly executed tests have a significant impact on feedback. 
+Ideally, tests begin alerting you to errors immediately after editing them,
+reducing the cost of fixing them to almost nothing.
+
+The Fourth Aspect: Ease Of Support
+How difficult is the test to understand. This component is related to the size of the test. 
+The less code in a test, the easier it is to read. Small tests are also easier to change if necessary.
+The quality of test code is no less important than the quality of production code.
+How difficult is the test to run. If a test relies on out-of-process dependencies, 
+you will have to spend time maintaining these dependencies: restarting the database server,
+troubleshooting network issues.
