@@ -1,0 +1,32 @@
+An external dependency is an object in the system with which the code under test interacts,
+but over which it has no control (typical examples: file system, threads, memory, time, etc.).
+A stub is a controlled replacement for an existing dependency (or companion) in a system. 
+Using a stub, we can test the code without interacting with the dependency directly.
+Mocks are the same as stubs, but you can make assertions about a mock object, but not about a stub.
+
+Any object-oriented problem can be solved by adding a level of indirection, 
+provided, of course, the number of levels of indirection is not too high.
+Add a level of indirection that wraps calls to this "something," 
+and then mock this level in your tests. Or make this "something" spoofable 
+(so that it itself represents a level of indirection).
+
+Seams are places in a program where other functionality can be plugged 
+in to replace existing functionality, such as:
+stub classes, adding a constructor parameter, adding a public settable property, 
+making a method virtual so it can be overridden, or externalizing a delegate
+as a parameter or property so it can be set outside the class.
+A seam is what results from following the open-closed principle,
+where a class's functionality is open for extension, but its source code 
+is closed for direct modification.
+
+For testing LogAnalyzer we create an interface with a single method, IsValid(string).
+The FileExtensionManager class implements this interface. 
+It works the same as before, but now we can replace the "real" Manager with a "fake" one, 
+which we'll create below to support testing.
+
+AlwaysValidFakeExtensionManager - stub class fot the extension manager.
+Pay attention to the class name. It's very important. Not StubExtensionManager or MockExtensionManager , 
+but FakeExtensionManager. The word "fake" means that the object looks like another object, 
+but can be used as a stub or mock object (the next chapter discusses mock objects).
+
+FakeExtensionManager - customizable fake class.
