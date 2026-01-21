@@ -13,4 +13,19 @@ public class LogAnalyzerTests
 
         Assert.True(result);
     }
+
+    [Fact]
+    public void IsValidFileName_ExtManagerThrowsException_ReturnsFalse()
+    {
+        FakeExtensionManager myFakeManager = new FakeExtensionManager();
+        string exMessage = "It's fake copy";
+        myFakeManager.WillThrow = new Exception(exMessage);
+        LogAnalyzer log = new LogAnalyzer(myFakeManager);
+
+        //bool result = log.IsValidLogFileName("anything.anyextension");
+        var ex = Assert.Throws<ArgumentException>(
+            () => log.IsValidLogFileName("anything.anyextension"));
+
+        Assert.Equal(exMessage, ex.Message);
+    }
 }

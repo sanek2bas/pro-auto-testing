@@ -30,7 +30,7 @@ public class HeaderRenderer : IRenderer
 {
     public string Render(Message message)
     {
-        return $"<h1>{message.Body}</h1>";
+        return $"<h1>{message.Header}</h1>";
     }
 }
 
@@ -46,6 +46,6 @@ public class FooterRenderer : IRenderer
 {
     public string Render(Message message)
     {
-        return $"<f>{message.Body}</f>";
+        return $"<f>{message.Footer}</f>";
     }
 }

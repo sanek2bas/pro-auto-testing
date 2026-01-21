@@ -24,7 +24,7 @@ public class MessageRendererTests
             Footer = "f"
         };
         string html = sut.Render(message);
-        Assert.Equal("<h1>h</h1><b>b</b><i>f</i>", html);
+        Assert.Equal("<h1>h</h1><b>b</b><f>f</f>", html);
     }
 
     private MessageRenderer CreateMessageRender()
