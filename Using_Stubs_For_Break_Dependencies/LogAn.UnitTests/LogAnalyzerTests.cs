@@ -22,8 +22,7 @@ public class LogAnalyzerTests
         myFakeManager.WillThrow = new Exception(exMessage);
         LogAnalyzer log = new LogAnalyzer(myFakeManager);
 
-        //bool result = log.IsValidLogFileName("anything.anyextension");
-        var ex = Assert.Throws<ArgumentException>(
+        var ex = Assert.Throws<Exception>(
             () => log.IsValidLogFileName("anything.anyextension"));
 
         Assert.Equal(exMessage, ex.Message);
