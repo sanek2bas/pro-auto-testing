@@ -1,18 +1,17 @@
-﻿namespace LogAn
+﻿namespace LogAn;
+
+public class LogAnalyzerUsingFactory
 {
-    public class LogAnalyzerUsingFactory
+    private IExtensionManager manager;
+
+    public LogAnalyzerUsingFactory()
     {
-        private IExtensionManager manager;
+        manager = ExtensionManagerFactory.Instance.Create();
+    }
 
-        public LogAnalyzerUsingFactory()
-        {
-            manager = ExtensionManagerFactory.Instance.Create();
-        }
-
-        public bool IsValidLogFileName(string fileName)
-        {
-            return manager.IsValid(fileName)
-                && Path.GetFileNameWithoutExtension(fileName).Length >= 5;
-        }
+    public bool IsValidLogFileName(string fileName)
+    {
+        return manager.IsValid(fileName)
+            && Path.GetFileNameWithoutExtension(fileName).Length >= 5;
     }
 }
