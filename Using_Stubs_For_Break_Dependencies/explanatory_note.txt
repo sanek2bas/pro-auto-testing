@@ -29,4 +29,6 @@ Pay attention to the class name. It's very important. Not StubExtensionManager o
 but FakeExtensionManager. The word "fake" means that the object looks like another object, 
 but can be used as a stub or mock object (the next chapter discusses mock objects).
 
-FakeExtensionManager - customizable fake class.
+FakeExtensionManager - customizable fake class. Thanks to the customization feature, we can use the stub class 
+in multiple tests—the test will only need to configure the stub before testing the passed object.
+This also makes the test code more understandable, because the reader will find everything they need in one place.  
