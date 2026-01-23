@@ -31,4 +31,7 @@ but can be used as a stub or mock object (the next chapter discusses mock object
 
 FakeExtensionManager - customizable fake class. Thanks to the customization feature, we can use the stub class 
 in multiple tests—the test will only need to configure the stub before testing the passed object.
-This also makes the test code more understandable, because the reader will find everything they need in one place.  
+This also makes the test code more understandable, because the reader will find everything they need in one place.
+
+LogAnalyzerUsingFactoryTests - by setting a property, tell the factory class to return the dependency. 
+The fake is a member of the factory class, and nothing changes in the class under test.

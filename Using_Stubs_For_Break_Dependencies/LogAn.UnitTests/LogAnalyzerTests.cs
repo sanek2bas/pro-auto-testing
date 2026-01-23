@@ -5,7 +5,7 @@ public class LogAnalyzerTests
     [Fact]
     public void IsValidFileName_NameSupportedExtension_ReturnsTrue()
     {
-        FakeExtensionManager myFakeManager = new FakeExtensionManager();
+        FakeExtensionManager myFakeManager = CreateFakeExtensionManager();
         myFakeManager.WillBeValid = true;
         LogAnalyzer log = new LogAnalyzer(myFakeManager);
 
@@ -17,7 +17,7 @@ public class LogAnalyzerTests
     [Fact]
     public void IsValidFileName_ExtManagerThrowsException_ReturnsFalse()
     {
-        FakeExtensionManager myFakeManager = new FakeExtensionManager();
+        FakeExtensionManager myFakeManager = CreateFakeExtensionManager();
         string exMessage = "It's fake copy";
         myFakeManager.WillThrow = new Exception(exMessage);
         LogAnalyzer log = new LogAnalyzer(myFakeManager);
@@ -26,5 +26,10 @@ public class LogAnalyzerTests
             () => log.IsValidLogFileName("anything.anyextension"));
 
         Assert.Equal(exMessage, ex.Message);
+    }
+
+    private FakeExtensionManager CreateFakeExtensionManager()
+    {
+        return new FakeExtensionManager();
     }
 }
