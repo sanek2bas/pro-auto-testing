@@ -17,3 +17,10 @@ Also note that the assertion is moved outside the mock object's code. There are 
  - if the assertion were placed inside a handwritten mock class, the reader of the test wouldn't be able 
    to understand what was being asserted. We've removed essential information from the test code, making it 
    less readable and maintainable.
+
+Analyze_WebServiceThrows_SendsEmail - this test uses two fake objects. One is a fake mail service, 
+which we'll use to verify that the correct parameters were passed to the mail service. 
+The second is a stub, which will allow us to simulate an exception raised by the web service.
+It's a stub because we won't be using the fake web service to verify the test's outcome;
+it's only needed to ensure its functionality. The mail service is a stub because we're making 
+an assertion about the correctness of its call.
