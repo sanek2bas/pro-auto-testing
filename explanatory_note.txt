@@ -3,7 +3,13 @@ There are three styles of unit testing:
 - state testing;
 - interaction testing.
 
-Discount_Of_Two_Products - output verification, in which input data is fed to the 
+Discount_Of_Two_Products 
+Output testing, in which input data is fed to the 
 system under test (SUT) and the resulting output is verified. 
 This style of unit testing is only applicable to code that does not modify global or internal state, 
 so the only component that needs to be verified is its return value.
+
+Adding_A_Product_To_An_Order
+Stateful testing in which the test verifies the state of the system after 
+an operation has completed. The term "state" in this style of testing can refer to the state of the system
+under test itself, one of its collaborators, or an out-of-process dependency—for example, a database or file system.
