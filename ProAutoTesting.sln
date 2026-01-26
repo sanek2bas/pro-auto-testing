@@ -4,7 +4,7 @@ VisualStudioVersion = 18.0.11217.181
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "First_Autonomous_Test", "First_Autonomous_Test", "{F165E8B4-F48B-AD39-66D7-A54EE98E9231}"
 	ProjectSection(SolutionItems) = preProject
-		explanatory_note.txt = explanatory_note.txt
+		First_Autonomous_Test\explanatory_note.txt = First_Autonomous_Test\explanatory_note.txt
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogAn", "First_Autonomous_Test\LogAn\LogAn.csproj", "{D81E65A5-5E53-DE46-5484-7C25269A4862}"
@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogAn.UnitTests", "First_Au
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Four_Aspects_Of_Good_Unit_Tests", "Four_Aspects_Of_Good_Unit_Tests", "{77CEB561-7E68-4E0B-AA00-DB8727C6A863}"
 	ProjectSection(SolutionItems) = preProject
-		explanatory_note.txt = explanatory_note.txt
+		Four_Aspects_Of_Good_Unit_Tests\explanatory_note.txt = Four_Aspects_Of_Good_Unit_Tests\explanatory_note.txt
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SUT", "Four_Aspects_Of_Good_Unit_Tests\SUT\SUT.csproj", "{45C39EDD-3194-42C6-8D88-9A70EF9503CF}"
@@ -49,7 +49,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SUT.UnitTests", "Unit_Testi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Isolating_Frames_For_Generating_Dummy_Objects", "Isolating_Frames_For_Generating_Dummy_Objects", "{BB931595-F716-4DE2-8520-5D753E9270F0}"
 	ProjectSection(SolutionItems) = preProject
-		explanatory_note.txt = explanatory_note.txt
+		Isolating_Frames_For_Generating_Dummy_Objects\explanatory_note.txt = Isolating_Frames_For_Generating_Dummy_Objects\explanatory_note.txt
 	EndProjectSection
 EndProject
 Global
