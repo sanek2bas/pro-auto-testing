@@ -2,4 +2,5 @@
 
 public interface IFileNameRules
 {
+    bool IsValidLogFileName(string fileName);
 }

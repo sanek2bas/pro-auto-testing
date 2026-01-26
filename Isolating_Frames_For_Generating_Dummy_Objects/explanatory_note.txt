@@ -13,3 +13,15 @@ The last line uses an extension method provided by NSub instead of the usual ass
 The ILogger interface doesn't have a method named Received(). Using this method, we assert that this fake 
 object was actually called (and therefore is conceptually a fake). It returns an object of the same type 
 it was called on, but its methods are used to make assertions.
+
+Returns_ByDefault_WorksForHardCodedArgument - but what if we don't care about the argument? 
+From a maintainability perspective, it would be better to always return a specific fake value,
+no matter what the argument, because then, no matter how the internal structure of the production code changes,
+the test will still pass, even if the production code calls the method several times. 
+Clarity will also be improved, because now the reader of the test doesn't know whether a specific file
+name is important. If you can make their life easier by not forcing them to absorb unnecessary information,
+then they'll be able to maintain your code more easily.
+
+Returns_ByDefault_WorksForHardCodedArgument_2 - the Arg class is used to indicate that this fake value 
+should be returned for any input argument. Such argument matchers are widely used in isolation frameworks
+to specify the order in which arguments are processed.

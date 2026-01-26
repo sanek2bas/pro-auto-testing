@@ -27,4 +27,20 @@ public class LogAnalyzerTests
 
         logger.Received().LogError($"The name is too short");
     }
+
+    [Fact]
+    public void Returns_ByDefault_WorksForHardCodedArgument()
+    {
+        IFileNameRules fakeRules = Substitute.For<IFileNameRules>();
+        fakeRules.IsValidLogFileName("strict.txt").Returns(true);
+        Assert.True(fakeRules.IsValidLogFileName("strict.txt"));
+    }
+
+    [Fact]
+    public void Returns_ByDefault_WorksForHardCodedArgument_2()
+    {
+        IFileNameRules fakeRules = Substitute.For<IFileNameRules>();
+        fakeRules.IsValidLogFileName(Arg.Any<String>()).Returns(true);
+        Assert.True(fakeRules.IsValidLogFileName("anything.txt"));
+    }
 }
