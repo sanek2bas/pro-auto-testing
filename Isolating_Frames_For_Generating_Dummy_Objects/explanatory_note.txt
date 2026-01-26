@@ -9,3 +9,7 @@ A dynamic fake object is a stub or mock created at runtime without the need to m
 Analyze_TooShortFileName_CallLogger - a handwritten forgery created without the use of an insulating frame.
 
 Analyze_TooShortFileName_CallLogger_With_NSub - test with dynamic dummy object.
+The last line uses an extension method provided by NSub instead of the usual assertion. 
+The ILogger interface doesn't have a method named Received(). Using this method, we assert that this fake 
+object was actually called (and therefore is conceptually a fake). It returns an object of the same type 
+it was called on, but its methods are used to make assertions.
