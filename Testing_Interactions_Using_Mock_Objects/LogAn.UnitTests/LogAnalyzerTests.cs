@@ -11,7 +11,7 @@
             string tooShortFileName = "abc.ext";
             log.Analyze(tooShortFileName);
 
-            Assert.Contains($"The name is too short: {tooShortFileName}", mockService.LastError);
+            Assert.Contains(mockService.LastError, $"The name is too short: {tooShortFileName}");
         }
     }
 }

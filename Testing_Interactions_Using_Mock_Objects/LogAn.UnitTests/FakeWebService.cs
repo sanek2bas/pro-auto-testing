@@ -6,6 +6,6 @@ public class FakeWebService : IWebService
 
     public void LogError(string message)
     {
-        throw new NotImplementedException();
+        LastError = message;
     }
 }
