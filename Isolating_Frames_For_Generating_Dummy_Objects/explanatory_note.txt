@@ -3,3 +3,9 @@ faster, and more concise than doing it manually. A well-designed isolation frame
 from having to write the same code over and over again to assert or simulate object interactions. 
 And if the framework is designed very well, it can be used to create tests that will last for years,
 without forcing the developer to return to them after the slightest change to the production code.
+
+A dynamic fake object is a stub or mock created at runtime without the need to manually code the implementation.
+
+Analyze_TooShortFileName_CallLogger - a handwritten forgery created without the use of an insulating frame.
+
+Analyze_TooShortFileName_CallLogger_With_NSub - test with dynamic dummy object.

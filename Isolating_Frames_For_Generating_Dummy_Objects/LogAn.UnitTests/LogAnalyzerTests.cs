@@ -1,4 +1,6 @@
-﻿namespace LogAn.UnitTests;
+﻿using NSubstitute;
+
+namespace LogAn.UnitTests;
 
 public class LogAnalyzerTests
 {
@@ -12,5 +14,17 @@ public class LogAnalyzerTests
         analyzer.Analyze("a.txt");
         
         Assert.Contains("is too short", logger.LastError);
+    }
+
+    [Fact]
+    public void Analyze_TooShortFileName_CallLogger_With_NSub()
+    {
+        ILogger logger = Substitute.For<ILogger>();
+        LogAnalyzer analyzer = new LogAnalyzer(logger);
+
+        analyzer.MinNameLength = 6;
+        analyzer.Analyze("a.txt");
+
+        logger.Received().LogError($"The name is too short");
     }
 }
