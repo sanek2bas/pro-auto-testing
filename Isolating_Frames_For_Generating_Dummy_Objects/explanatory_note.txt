@@ -1,0 +1,5 @@
+An isolation framework is a set of programmable APIs that make creating mock objects much easier, 
+faster, and more concise than doing it manually. A well-designed isolation framework can free a developer 
+from having to write the same code over and over again to assert or simulate object interactions. 
+And if the framework is designed very well, it can be used to create tests that will last for years,
+without forcing the developer to return to them after the slightest change to the production code.
