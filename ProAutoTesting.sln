@@ -40,12 +40,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogAn.UnitTests", "Testing_
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit_Testing_Styles", "Unit_Testing_Styles", "{A40D4440-C52D-46AB-A047-4997B566D47F}"
 	ProjectSection(SolutionItems) = preProject
-		explanatory_note.txt = explanatory_note.txt
+		Unit_Testing_Styles\explanatory_note.txt = Unit_Testing_Styles\explanatory_note.txt
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SUT", "Unit_Testing_Styles\SUT\SUT.csproj", "{5F6184A0-6195-4997-98E0-5A0A753F82C9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SUT.UnitTests", "Unit_Testing_Styles\SUT.UnitTests\SUT.UnitTests.csproj", "{61A30F34-C931-4DE9-A2C5-88A697B82625}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Isolating_Frames_For_Generating_Dummy_Objects", "Isolating_Frames_For_Generating_Dummy_Objects", "{BB931595-F716-4DE2-8520-5D753E9270F0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
