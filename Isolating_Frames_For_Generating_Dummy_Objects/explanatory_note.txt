@@ -29,3 +29,7 @@ to specify the order in which arguments are processed.
 Analyze_LoggerThrows_CallsWebService
 Analyze_LoggerThrows_CallsWebService_With_NStub
 If the logger object raises an exception, the web service must be notified.
+
+Analyze_LoggerThrows_CallsWebServiceWithNSubObject
+Analyze_LoggerThrows_CallsWebServiceWithNSubObjectCompare
+Comparison of objects and properties
