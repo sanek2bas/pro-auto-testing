@@ -33,3 +33,10 @@ If the logger object raises an exception, the web service must be notified.
 Analyze_LoggerThrows_CallsWebServiceWithNSubObject
 Analyze_LoggerThrows_CallsWebServiceWithNSubObjectCompare
 Comparison of objects and properties
+
+Events are a two-way street, and they can be tested in two directions:
+- check that someone is listening to the event
+- check that someone is generating the event
+To test, it's best to ensure that the listener object actually does something in response to the generated event. 
+If the listener hasn't subscribed to the event, there will be no visible change in behavior.
+Ctor_WhenViewIsLoaded_CallsViewRender and Ctor_WhenViewhasError_CallsLogger - testing the event listener.
