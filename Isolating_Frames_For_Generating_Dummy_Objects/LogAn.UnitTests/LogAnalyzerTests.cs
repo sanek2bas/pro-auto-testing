@@ -1,5 +1,4 @@
 ﻿using NSubstitute;
-using System;
 
 namespace LogAn.UnitTests;
 
