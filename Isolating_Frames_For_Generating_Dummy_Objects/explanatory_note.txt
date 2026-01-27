@@ -25,3 +25,7 @@ then they'll be able to maintain your code more easily.
 Returns_ByDefault_WorksForHardCodedArgument_2 - the Arg class is used to indicate that this fake value 
 should be returned for any input argument. Such argument matchers are widely used in isolation frameworks
 to specify the order in which arguments are processed.
+
+Analyze_LoggerThrows_CallsWebService
+Analyze_LoggerThrows_CallsWebService_With_NStub
+If the logger object raises an exception, the web service must be notified.
