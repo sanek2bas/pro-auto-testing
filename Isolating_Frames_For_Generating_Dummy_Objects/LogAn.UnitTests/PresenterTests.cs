@@ -25,4 +25,18 @@ public class PresenterTests
         stubView.ErrorOccured +=
             Raise.Event<Action<string>>("fake error");
     }
+
+    [Fact]
+    public void EventFiringManual()
+    {
+        bool loadFired = false;
+        SomeView view = new SomeView();
+        view.Load += delegate
+        {
+            loadFired = true;
+        };
+        view.DoSomethingThatEventuallyFiresThisEvent();
+
+        Assert.True(loadFired);
+    }
 }

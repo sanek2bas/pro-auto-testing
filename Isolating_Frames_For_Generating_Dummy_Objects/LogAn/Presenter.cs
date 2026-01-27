@@ -7,6 +7,17 @@ public interface IView
     void Render(string text);
 }
 
+public class SomeView
+{
+    public event Action Load;
+
+    public void DoSomethingThatEventuallyFiresThisEvent()
+    {
+        //some code
+        Load?.Invoke();
+    }
+}
+
 public class Presenter
 {
     private readonly IView view;

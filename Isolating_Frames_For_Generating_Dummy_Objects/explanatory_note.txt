@@ -40,3 +40,5 @@ Events are a two-way street, and they can be tested in two directions:
 To test, it's best to ensure that the listener object actually does something in response to the generated event. 
 If the listener hasn't subscribed to the event, there will be no visible change in behavior.
 Ctor_WhenViewIsLoaded_CallsViewRender and Ctor_WhenViewhasError_CallsLogger - testing the event listener.
+
+EventFiringManual - using an anonymous delegate to subscribe to an event
