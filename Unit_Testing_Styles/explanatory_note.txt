@@ -13,3 +13,7 @@ Adding_A_Product_To_An_Order
 Stateful testing in which the test verifies the state of the system after 
 an operation has completed. The term "state" in this style of testing can refer to the state of the system
 under test itself, one of its collaborators, or an out-of-process dependency—for example, a database or file system.
+
+Sending_A_Greetings_Email
+The third style of unit testing is interaction testing. This style uses mocks to verify interactions between 
+the system under test and its collaborators.
