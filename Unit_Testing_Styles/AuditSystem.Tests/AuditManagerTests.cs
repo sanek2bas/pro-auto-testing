@@ -27,10 +27,11 @@ public class AuditManagerTests
             });
 
         var sut = new AuditManager(3, "audits", fileSystemMock.Object);
-        sut.AddRecord("Alice", DateTime.Parse("2019-04-06T18:00:00"));
+        var dateTimeParsed = DateTime.Parse("2019-04-06T18:00:00");
+        sut.AddRecord("Alice", dateTimeParsed);
 
         fileSystemMock.Verify(x => x.WriteAllText(
             @"audits\audit_3.txt",
-            "Alice;2019-04-06T18:00:00"));
+            $"Alice;{dateTimeParsed}"));
     }
 }

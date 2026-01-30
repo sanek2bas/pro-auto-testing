@@ -1,4 +1,6 @@
-﻿namespace AuditSystem;
+﻿using System.Runtime.InteropServices.Marshalling;
+
+namespace AuditSystem;
 
 public class AuditManager
 {
@@ -18,7 +20,7 @@ public class AuditManager
 
     public void AddRecord(string visitorName, DateTime timeOfVisit)
     {
-        string[] filePaths = Directory.GetFiles(directoryName);
+        string[] filePaths = fileSystem.GetFiles(directoryName);
         (int index, string path)[] sorted = SortByIndex(filePaths);
 
         string newRecord = visitorName + ';' + timeOfVisit;
@@ -26,7 +28,7 @@ public class AuditManager
         if (sorted.Length == 0)
         {
             string newFile = Path.Combine(directoryName, "audit_1.txt");
-            File.WriteAllText(newFile, newRecord);
+            fileSystem.WriteAllText(newFile, newRecord);
             return;
         }
 
@@ -50,7 +52,9 @@ public class AuditManager
 
     private (int, string)[] SortByIndex(string[] filePaths)
     {
-        //some code
-        return new (int, string)[] { };
+        var result = new (int, string)[filePaths.Length];
+        for (int i = 0; i < filePaths.Length; i++)
+            result[i] = new(i + 1, filePaths[i]);
+        return result;
     }
 }
