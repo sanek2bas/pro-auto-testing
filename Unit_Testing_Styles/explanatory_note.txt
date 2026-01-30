@@ -17,3 +17,8 @@ under test itself, one of its collaborators, or an out-of-process dependency—for
 Sending_A_Greetings_Email
 The third style of unit testing is interaction testing. This style uses mocks to verify interactions between 
 the system under test and its collaborators.
+
+AuditManagerTests - is good example of using the interface for separation of logic from the file system.
+It's worth noting that in this particular case, using a mock is justified. The application creates 
+files that are visible to end users (it's assumed that users can read the files using another program, 
+whether a specialized program or the standard notepad.exe).
