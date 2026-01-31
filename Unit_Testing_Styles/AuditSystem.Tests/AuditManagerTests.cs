@@ -13,12 +13,13 @@ public class AuditManagerTests
             .Setup(x => x.GetFiles("audits"))
             .Returns(new string[]
             {
-                @"audits\audit_1.txt",
-                @"audits\audit_2.txt"
+                Path.Combine("audits", "audit_1.txt"),
+                Path.Combine("audits", "audit_2.txt")
             });
 
+        var audit2Path = Path.Combine("audits", "audit_2.txt");
         fileSystemMock
-            .Setup(x => x.ReadAllLines(@"audits\audit_2.txt"))
+            .Setup(x => x.ReadAllLines(audit2Path))
             .Returns(new List<string>
             {
                 "Peter; 2019-04-06T16:30:00",
@@ -31,7 +32,7 @@ public class AuditManagerTests
         sut.AddRecord("Alice", dateTimeParsed);
 
         fileSystemMock.Verify(x => x.WriteAllText(
-            @"audits\audit_3.txt",
+            Path.Combine("audits", "audit_3.txt"),
             $"Alice;{dateTimeParsed}"));
     }
 }
