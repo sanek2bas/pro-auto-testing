@@ -61,6 +61,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuditSystem.Tests", "Unit_Testing_Styles\AuditSystem.Tests\AuditSystem.Tests.csproj", "{84E3747F-2ACF-4B58-B448-F16D23E8ED21}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Refactoring_For_Effective_Unit_Tests", "Refactoring_For_Effective_Unit_Tests", "{B1BA8F3A-6634-19C3-C45D-DC1A4323CA3E}"
+	ProjectSection(SolutionItems) = preProject
+		explanatory_note.txt = explanatory_note.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
