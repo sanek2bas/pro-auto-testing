@@ -37,9 +37,20 @@ public class Database
         //call db
         return new object[0];
     }
+
+    public void SaveUser(User user)
+    {
+        
+    }
+
+    public void SaveCompany(int numberOfEmployees)
+    {}
 }
 
 public class MessageBus
 {
-    
+    public void SendEmailChangedMessage(int userId, string email)
+    {
+        
+    }
 }
