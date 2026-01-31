@@ -1,0 +1,23 @@
+Significant improvement in test quality is usually only possible by refactoring the code under test. 
+There's no other way—there's a tight connection between test and production code. All working code
+can be classified alon two dimensions:
+- complexity or importance to the project
+- number of collaborators
+
+The combination of these two dimensions—code complexity and its importance to the project, on the one hand, 
+and the number of collaborators, on the other—creates four code types.
+1. Domain Model and Algorithms: Complex code is usually also part of the domain model, but not 100% of the time. 
+Sometimes, complex algorithms are encountered that are not directly related to the project's domain.
+2. Trivial Code: Examples of such code in C# include parameterless constructors and single-line properties. 
+They have a minimal number of collaborators (or none at all) and are of low complexity and importance to the project.
+3. Controllers: The code itself does not perform any complex or important work, but coordinates the work of 
+other components (e.g., domain classes and external applications).
+4. Overcomplicated Code: This code scores high on both metrics: it has many collaborators and is complex and/or important.
+Examples include "fat" controllers (controllers that do everything themselves and don't delegate complex work to anyone).
+
+The more important or complex the code, the fewer collaborators it should have.
+
+Remember: it is better not to write a test at all than to write a bad test.
+
+To separate overly complex code, you should use the Humble Object design pattern (project CRM)
+UserFactory class - this code is completely isolated from all project participants, so it is easy to test.
