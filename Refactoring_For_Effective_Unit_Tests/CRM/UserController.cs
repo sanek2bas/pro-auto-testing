@@ -17,8 +17,9 @@ public class UserController
 
         database.SaveCompany(company);
         database.SaveUser(user);
-        
-        messageBus.SendEmailChangedMessage(userId, newEmail);
+
+        foreach (var ev in user.EmailChangedEvents)
+            messageBus.SendEmailChangedMessage(ev.UserId, ev.NewEmail);
 
         return "OK";
     }

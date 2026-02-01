@@ -31,3 +31,11 @@ ChangeEmail() ensures that the email address is not changed without prior valida
 
 Domain event names should always be written in the past tense because they represent something that has already happened.
 Domain events are values - they are immutable and interchangeable.
+
+Note that Company and User instances are still persisted in the database regardless of domain events. 
+This is explained by the distinction between database changes and message bus messages.
+Assuming that no other application except the CRM has access to the database, database interactions 
+are not part of the CRM's observable behavior—they are implementation details. As long as the final database state is correct, 
+it doesn't matter how many database calls your application makes. On the other hand, message bus interactions are part 
+of the application's observable behavior. To maintain the contract with external systems,
+the CRM system should only send messages to the bus when an email address changes.

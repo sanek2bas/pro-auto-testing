@@ -10,11 +10,14 @@ public class User
 
     public bool IsEmailConfirmed { get; private set; }
 
+    public List<EmailChangedEvent> EmailChangedEvents { get; private set; }
+
     public User(int id, string email, UserType type)
     {
         UserId = id;
         Email = email;
         Type = type;
+        EmailChangedEvents = new List<EmailChangedEvent>();
     }
 
     public void ChangeEmail(string newEmail, Company company)
