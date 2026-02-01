@@ -5,18 +5,22 @@ public class UserController
     private readonly Database database = new Database();
     private readonly MessageBus messageBus = new MessageBus();
 
-    public void ChangeEmail(int userId, string newEmail)
+    public string ChangeEmail(int userId, string newEmail)
     {
         object[] userData = database.GetUserById(userId);
         var user = UserFactory.Create(userData);
         
         object[] companyData = database.GetCompany();
         Company company = CompanyFactory.Create(companyData);
-        
+
+        user.ChangeEmail(newEmail, company);
+
         database.SaveCompany(company);
         database.SaveUser(user);
         
         messageBus.SendEmailChangedMessage(userId, newEmail);
+
+        return "OK";
     }
 }
 

@@ -21,3 +21,13 @@ Remember: it is better not to write a test at all than to write a bad test.
 
 To separate overly complex code, you should use the Humble Object design pattern (project CRM)
 UserFactory class - this code is completely isolated from all project participants, so it is easy to test.
+
+A way to overcome the complexity of controllers is to use the "CanExecute/Execute" pattern, 
+which prevents business logic from leaking from the domain model into controllers.
+The controller no longer needs to know anything about the email address change process. 
+All it needs to do is call the CanChangeEmail() method to determine whether the operation can be performed. 
+This method can also contain other checks encapsulated by the controller. The additional precondition in 
+ChangeEmail() ensures that the email address is not changed without prior validation.
+
+Domain event names should always be written in the past tense because they represent something that has already happened.
+Domain events are values - they are immutable and interchangeable.

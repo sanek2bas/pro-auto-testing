@@ -8,6 +8,8 @@ public class User
 
     public UserType Type { get; private set; }
 
+    public bool IsEmailConfirmed { get; private set; }
+
     public User(int id, string email, UserType type)
     {
         UserId = id;
@@ -17,6 +19,8 @@ public class User
 
     public void ChangeEmail(string newEmail, Company company)
     {
+        //Precondition.Requires(CanChangeEmail() == null);
+
         if (Email == newEmail)
             return;
 
@@ -32,6 +36,13 @@ public class User
 
         Email = newEmail;
         Type = newType;
+    }
+
+    public string CanChangeEmail()
+    {
+        if (IsEmailConfirmed)
+            return "Can't change a confirmed email";
+        return null;
     }
 }
 
