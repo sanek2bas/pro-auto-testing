@@ -39,3 +39,5 @@ are not part of the CRM's observable behavior—they are implementation details. A
 it doesn't matter how many database calls your application makes. On the other hand, message bus interactions are part 
 of the application's observable behavior. To maintain the contract with external systems,
 the CRM system should only send messages to the bus when an email address changes.
+
+Abstractions are easier to test than what they abstract.
