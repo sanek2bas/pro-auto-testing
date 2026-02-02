@@ -1,6 +1,6 @@
 ﻿using Moq;
 
-namespace AuditSystem.Tests;
+namespace AuditSystem.UnitTests;
 
 public class AuditManagerTests
 {

@@ -1,4 +1,4 @@
-﻿namespace AuditSystem.Tests;
+﻿namespace AuditSystem.UnitTests;
 
 public class AuditManager2Tests
 {
