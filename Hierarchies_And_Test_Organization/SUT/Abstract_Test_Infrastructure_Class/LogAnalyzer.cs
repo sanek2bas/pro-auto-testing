@@ -1,4 +1,4 @@
-namespace SUT.Abstract_Test_Infrastructure_Class_Pattern;
+namespace SUT.Abstract_Test_Infrastructure_Class;
 
 public class LogAnalyzer
 {

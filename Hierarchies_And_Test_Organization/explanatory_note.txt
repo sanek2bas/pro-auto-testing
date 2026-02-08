@@ -7,3 +7,8 @@ to special assertions that are made across multiple
 test classes.
 Never use more than one level of inheritance in tests.
 xUnit does not use a specific [Cleanup] or [TestCleanup] attribute.
+
+Template_Test_Class
+This is an abstract class containing abstract test methods that 
+must be implemented in derived classes. The driving force behind this pattern 
+is to force derived classes to implement specific tests.

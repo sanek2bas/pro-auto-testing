@@ -1,7 +1,7 @@
 using NSubstitute;
-using SUT.Abstract_Test_Infrastructure_Class_Pattern;
+using SUT.Abstract_Test_Infrastructure_Class;
 
-namespace SUT.UnitTests.Abstract_Test_Infrastructure_Class_Pattern;
+namespace SUT.UnitTests.Abstract_Test_Infrastructure_Class;
 
 public class BaseTestsClass
 {
