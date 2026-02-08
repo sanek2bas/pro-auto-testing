@@ -1,0 +1,7 @@
+Abstract_Test_Infrastructure_Class_Pattern
+This pattern involves creating an abstract test class
+that contains the necessary infrastructure common to
+its derived classes. Such as class can be used in a wide
+variety situations, from general setup and cleanup code 
+to special assertions that are made across multiple 
+test classes.
