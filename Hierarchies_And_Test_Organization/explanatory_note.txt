@@ -5,3 +5,5 @@ its derived classes. Such as class can be used in a wide
 variety situations, from general setup and cleanup code 
 to special assertions that are made across multiple 
 test classes.
+Never use more than one level of inheritance in tests.
+xUnit does not use a specific [Cleanup] or [TestCleanup] attribute.
