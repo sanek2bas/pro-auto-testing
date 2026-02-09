@@ -12,3 +12,4 @@ Template_Test_Class
 This is an abstract class containing abstract test methods that 
 must be implemented in derived classes. The driving force behind this pattern 
 is to force derived classes to implement specific tests.
+A template base class ensures that developers won't forget important tests. 
