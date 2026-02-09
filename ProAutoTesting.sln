@@ -69,7 +69,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRM.UnitTests", "Refactorin
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hierarchies_And_Test_Organization", "Hierarchies_And_Test_Organization", "{D0204A59-4ABE-FCCA-AA6D-3F8FD7FF498A}"
 	ProjectSection(SolutionItems) = preProject
-		explanatory_note.txt = explanatory_note.txt
+		Hierarchies_And_Test_Organization\explanatory_note.txt = Hierarchies_And_Test_Organization\explanatory_note.txt
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SUT", "Hierarchies_And_Test_Organization\SUT\SUT.csproj", "{C58682C5-6615-4259-AE1B-6134BF6ACD74}"

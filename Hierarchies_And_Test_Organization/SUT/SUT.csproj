@@ -7,7 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Abstract_Test_Infrastructure_Class_Pattern/" />
+    <Compile Remove="Abstract_Test_Infrastructure_Class_Pattern\**" />
+    <EmbeddedResource Remove="Abstract_Test_Infrastructure_Class_Pattern\**" />
+    <None Remove="Abstract_Test_Infrastructure_Class_Pattern\**" />
   </ItemGroup>
 
 </Project>
