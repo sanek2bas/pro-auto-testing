@@ -2,8 +2,14 @@
 
 public class UserController
 {
-    private readonly Database database = new Database();
-    private readonly MessageBus messageBus = new MessageBus();
+    private readonly Database database;
+    private readonly IMessageBus messageBus;
+
+    public UserController(Database db, IMessageBus bus)
+    {
+        database = db;
+        messageBus = bus;
+    }
 
     public string ChangeEmail(int userId, string newEmail)
     {
@@ -48,7 +54,12 @@ public class Database
     {}
 }
 
-public class MessageBus
+public interface IMessageBus
+{
+    void SendEmailChangedMessage(int userId, string email);
+}
+
+public class MessageBus : IMessageBus
 {
     public void SendEmailChangedMessage(int userId, string email)
     {

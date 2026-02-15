@@ -1,4 +1,10 @@
 The general recommendation for integration testing is to cover
 the longest positive path and any edge cases that cannot be 
 handled by unit tests. The longest positive it the one that
-passes throught all out-of-process dependencies.    
+passes throught all out-of-process dependencies.  
+
+Regarding edge cases not tested by unit tests, there is only one: 
+a script whose address cannot be changed. However, testing this scenario 
+is unnecessary, because without such a check in the controller, 
+the application will quickly fail. This leaves just one integration test:
+public void Change_email_from_corporate_to_non_corporate()
