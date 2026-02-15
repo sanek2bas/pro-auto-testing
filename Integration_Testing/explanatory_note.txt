@@ -1,0 +1,4 @@
+The general recommendation for integration testing is to cover
+the longest positive path and any edge cases that cannot be 
+handled by unit tests. The longest positive it the one that
+passes throught all out-of-process dependencies.    
