@@ -77,6 +77,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SUT.UnitTests", "Hierarchies_And_Test_Organization\SUT.UnitTests\SUT.UnitTests.csproj", "{F2966AA6-6952-42EC-AEFE-B72E09F032A6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration_Testing", "Integration_Testing", "{CCC566F2-D38D-0B28-BB19-9E70E3928C95}"
+	ProjectSection(SolutionItems) = preProject
+		Integration_Testing\explanatory_note.txt = Integration_Testing\explanatory_note.txt
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRM.IntegrationTests", "Integration_Testing\CRM.IntegrationTests\CRM.IntegrationTests.csproj", "{5A6B88B5-2F61-46C5-AF1A-1AFECB8C221F}"
 EndProject
