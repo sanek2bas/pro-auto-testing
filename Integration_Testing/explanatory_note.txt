@@ -33,3 +33,9 @@ Don't write interfaces for out-of-process dependencies unless you need to replac
 Since mocks should only be used for unmanaged dependencies, this recommendation boils down to this: 
 use interfaces only for unmanaged dependencies. Managed dependencies should still be explicitly injected 
 into the controller, but use specific classes for this purpose.
+
+Interactions with out-of-process dependencies should be considered based on whether these interactions
+are part of the application's observable behavior or an implementation detail. 
+Logging is no different in this regard. Replace logging functionality with a mock if the
+logs are accessible to non-programmers; otherwise, there's no need to test it.
+In the next chapter, we'll dive deeper into mocks and related recommendations.
