@@ -28,3 +28,8 @@ and only then checks their state. This approach ensures that the test verifies
 both writing and reading from the database, thus providing maximum protection against bugs. 
 The reading itself should be performed using the same code used in the controller's internal implementation; 
 in this example, this is the code for the Database, UserFactory, and CompanyFactory classes.
+
+Don't write interfaces for out-of-process dependencies unless you need to replace them based on a mock.
+Since mocks should only be used for unmanaged dependencies, this recommendation boils down to this: 
+use interfaces only for unmanaged dependencies. Managed dependencies should still be explicitly injected 
+into the controller, but use specific classes for this purpose.
