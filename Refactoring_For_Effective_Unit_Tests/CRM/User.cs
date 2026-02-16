@@ -39,6 +39,8 @@ public class User
 
         Email = newEmail;
         Type = newType;
+
+        EmailChangedEvents.Add(new EmailChangedEvent(UserId, newEmail));
     }
 
     public string CanChangeEmail()

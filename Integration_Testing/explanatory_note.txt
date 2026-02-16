@@ -8,3 +8,23 @@ a script whose address cannot be changed. However, testing this scenario
 is unnecessary, because without such a check in the controller, 
 the application will quickly fail. This leaves just one integration test:
 public void Change_email_from_corporate_to_non_corporate()
+
+Before writing integration tests, you need to classify the two out-of-process 
+dependencies and decide which one should be tested directly and which should be 
+replaced with a mock. The application database is a managed dependency because 
+no other system can access it. Therefore, you should use a real instance of it. 
+The integration test should:
+-insert user and company data into the database;
+-execute an email update scenario against this database;
+-check the state of the database.
+On the other hand, the message bus is an unmanaged dependency—it is needed solely 
+to ensure interaction with other systems. The integration test will replace the 
+message bus with a mock and then test the interactions between the controller and this mock.
+
+It's crucial to check the database state independently of the data used as input parameters. 
+To do this, the integration test separately requests user and company information 
+in the assertion section, creates new userFromDb and companyFromDb instances, 
+and only then checks their state. This approach ensures that the test verifies 
+both writing and reading from the database, thus providing maximum protection against bugs. 
+The reading itself should be performed using the same code used in the controller's internal implementation; 
+in this example, this is the code for the Database, UserFactory, and CompanyFactory classes.
