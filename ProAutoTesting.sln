@@ -60,7 +60,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuditSystem.UnitTests", "Un
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Refactoring_For_Effective_Unit_Tests", "Refactoring_For_Effective_Unit_Tests", "{B1BA8F3A-6634-19C3-C45D-DC1A4323CA3E}"
 	ProjectSection(SolutionItems) = preProject
-		explanatory_note.txt = explanatory_note.txt
+		Refactoring_For_Effective_Unit_Tests\explanatory_note.txt = Refactoring_For_Effective_Unit_Tests\explanatory_note.txt
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRM", "Refactoring_For_Effective_Unit_Tests\CRM\CRM.csproj", "{F573D9B9-DED4-4C22-90B3-575E8499D1F8}"
