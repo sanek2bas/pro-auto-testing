@@ -51,6 +51,12 @@ public class User
     }
 }
 
+public enum UserType
+{
+    Customer = 1,
+    Employee = 2
+}
+
 public class UserFactory
 {
     public static User Create(object[] data)
