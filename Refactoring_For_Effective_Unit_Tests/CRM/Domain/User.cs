@@ -1,6 +1,4 @@
-﻿using CRM.Infrastructure;
-
-namespace CRM.Domain;
+﻿namespace CRM.Domain;
 
 public class User
 {

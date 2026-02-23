@@ -24,3 +24,8 @@ To separate overly complex code, you should use the Humble Object design pattern
 Unnecessary layers of abstraction negatively impact your ability to understand code. 
 Try to keep the number of these layers to a minimum. Most backend systems require only three layers: 
 domain, application services, and infrastructure.
+
+The DomainLogger shell runs on top of ILogger: it uses a domain-specific language to declare specific 
+records required by the business, making service logging easier to understand and maintain. 
+This implementation is very similar to the concept of structured logging, which provides greater 
+flexibility in subsequent log processing and analysis.
