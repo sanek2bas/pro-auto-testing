@@ -1,5 +1,5 @@
-﻿using System.Data.Common;
-using System.Runtime.CompilerServices;
+﻿using CRM.AppServices;
+using CRM.Domain;
 using Moq;
 
 namespace CRM.IntegrationTests;

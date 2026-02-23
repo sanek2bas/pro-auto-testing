@@ -1,4 +1,4 @@
-﻿namespace CRM;
+﻿namespace CRM.Infrastructure;
 
 public class EmailChangedEvent
 {

@@ -1,4 +1,7 @@
 ﻿
+using CRM.Domain;
+using CRM.Infrastructure;
+
 namespace CRM.UnitTests;
 
 public class UserTests

@@ -1,4 +1,4 @@
-Significant improvement in test quality is usually only possible by refactoring the code under test. 
+ Significant improvement in test quality is usually only possible by refactoring the code under test. 
 There's no other way—there's a tight connection between test and production code. All working code
 can be classified alon two dimensions:
 - complexity or importance to the project
@@ -20,3 +20,7 @@ The more important or complex the code, the fewer collaborators it should have.
 Remember: it is better not to write a test at all than to write a bad test.
 
 To separate overly complex code, you should use the Humble Object design pattern.
+
+Unnecessary layers of abstraction negatively impact your ability to understand code. 
+Try to keep the number of these layers to a minimum. Most backend systems require only three layers: 
+domain, application services, and infrastructure.
