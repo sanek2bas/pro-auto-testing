@@ -6,18 +6,22 @@ namespace CRM;
 public class UserController
 {
     private readonly Database database;
-    private readonly IMessageBus messageBus;
+    private readonly EventDispatcher eventDispatcher;
 
-    public UserController(Database db, IMessageBus bus)
+    public UserController(Database db, IMessageBus bus, IDomainLogger logger)
     {
         database = db;
-        messageBus = bus;
+        eventDispatcher = new EventDispatcher(bus, logger);
     }
 
     public string ChangeEmail(int userId, string newEmail)
     {
         object[] userData = database.GetUserById(userId);
         var user = UserFactory.Create(userData);
+
+        string error = user.CanChangeEmail();
+        if (error != null)
+            return error;
         
         object[] companyData = database.GetCompany();
         Company company = CompanyFactory.Create(companyData);
@@ -27,8 +31,7 @@ public class UserController
         database.SaveCompany(company);
         database.SaveUser(user);
 
-        foreach (var ev in user.EmailChangedEvents)
-            messageBus.SendEmailChangedMessage(ev.UserId, ev.NewEmail);
+        eventDispatcher.Dispatch(user.DomainEvents);
 
         return "OK";
     }

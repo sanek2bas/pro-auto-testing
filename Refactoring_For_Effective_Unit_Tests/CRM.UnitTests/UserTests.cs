@@ -30,9 +30,6 @@ public class UserTests
         Assert.Equal(0, company.NumberOfEmployees);
         Assert.Equal("new@gmail.com", sut.Email);
         Assert.Equal(UserType.Customer, sut.Type);
-        Assert.Single(sut.EmailChangedEvents);
-        Assert.Equal(new EmailChangedEvent(1, "new@gmail.com"), 
-                     sut.EmailChangedEvents[0]);
     }
 
     [InlineData("mycorp.com", "email@mycorp.com", true)]
