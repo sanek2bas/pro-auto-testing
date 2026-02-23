@@ -43,3 +43,13 @@ In the next chapter, we'll dive deeper into mocks and related recommendations.
 The new EventDispatcher class converts domain events into calls to out-of-process dependencies:
 EmailChangedEvent converts to _messageBus.SendEmailChangedMessage();
 UserTypeChangedEvent converts to _domainLogger.UserTypeHasChanged().
+
+public void Change_Email_From_Corporate_To_Non_Corporate()
+This test replaces two unmanaged dependencies with mocks: IMessageBus and IDomainLogger.
+Let's look at IMessageBus first. IDomainLogger will be discussed later in this chapter.
+When using mocks, always follow this principle: test interactions with unmanaged dependencies 
+at the very edges of your system.
+
+An unmanaged dependency goes through several stages before exiting your application.
+Choose the last of these stages. This is the best way to ensure backward compatibility 
+with external systems, which is the purpose of mocks. So IMessageBus was replace with IBus.

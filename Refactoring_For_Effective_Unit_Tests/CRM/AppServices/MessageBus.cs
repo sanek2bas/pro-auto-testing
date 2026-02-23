@@ -1,14 +1,29 @@
 ﻿namespace CRM.AppServices;
 
-public interface IMessageBus
+public interface IBus
 {
-    void SendEmailChangedMessage(int userId, string email);
+    void Send(string message);
 }
 
-public class MessageBus : IMessageBus
-{
-    public void SendEmailChangedMessage(int userId, string email)
-    {
+//public interface IMessageBus
+//{
+//    void SendEmailChangedMessage(int userId, string email);
+//}
 
+//public class MessageBus : IMessageBus
+public class MessageBus
+{
+    private readonly IBus bus;
+
+    public MessageBus(IBus bus)
+    {
+        this.bus = bus;
+    }
+
+    public void SendEmailChangedMessage(int userId, string newEmail)
+    {
+        bus.Send("Type: USER EMAIL CHANGED; " 
+                + $"Id: {userId}; " 
+                + $"NewEmail: {newEmail}");
     }
 }

@@ -13,9 +13,10 @@ public class UserControllerIntegrationTests
         User user = CreateUser("user@mycorp.com", UserType.Employee, db);
         _ = CreateCompany("mycorp.com", 1, db);
 
-        var messageBusMock = new Mock<IMessageBus>();
+        var busMock = new Mock<IBus>();
+        var messagBus = new MessageBus(busMock.Object);
         var loggerMock = new Mock<IDomainLogger>();
-        var sut = new UserController(db, messageBusMock.Object, loggerMock.Object);
+        var sut = new UserController(db, messagBus, loggerMock.Object);
 
         // Act
         string result = sut.ChangeEmail(user.UserId, "new@gmail.com");
@@ -32,8 +33,10 @@ public class UserControllerIntegrationTests
         Assert.Equal(0, companyFromDb.NumberOfEmployees);
 
         //Check interactions with mocks
-        messageBusMock.Verify(
-            x => x.SendEmailChangedMessage(user.UserId, "new@gmail.com"), Times.Once);
+        busMock.Verify(
+            x => x.Send("Type: USER EMAIL CHANGED; " 
+                      + $"Id: {user.UserId}; "
+                      + "NewEmail: new@gmail.com"));
         loggerMock.Verify(
             x => x.UserTypeHasChanged(user.UserId, UserType.Employee, UserType.Customer));
     }

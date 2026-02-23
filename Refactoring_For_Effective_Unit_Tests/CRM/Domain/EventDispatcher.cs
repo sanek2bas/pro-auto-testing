@@ -4,10 +4,10 @@ namespace CRM.Domain;
 
 public class EventDispatcher
 {
-    private readonly IMessageBus messageBus;
+    private readonly MessageBus messageBus;
     private readonly IDomainLogger domainLogger;
 
-    public EventDispatcher(IMessageBus bus, IDomainLogger logger)
+    public EventDispatcher(MessageBus bus, IDomainLogger logger)
     {
         messageBus = bus;
         domainLogger = logger;

@@ -8,7 +8,7 @@ public class UserController
     private readonly Database database;
     private readonly EventDispatcher eventDispatcher;
 
-    public UserController(Database db, IMessageBus bus, IDomainLogger logger)
+    public UserController(Database db, MessageBus bus, IDomainLogger logger)
     {
         database = db;
         eventDispatcher = new EventDispatcher(bus, logger);
