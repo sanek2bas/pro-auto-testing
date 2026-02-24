@@ -53,3 +53,15 @@ at the very edges of your system.
 An unmanaged dependency goes through several stages before exiting your application.
 Choose the last of these stages. This is the best way to ensure backward compatibility 
 with external systems, which is the purpose of mocks. So IMessageBus was replace with IBus.
+
+A Spy is type of test stub that serves the same purpose as a mock. The only difference is that
+spies are written by hand, while mocks are created using mocking frameworks. For classes
+located near the boundaries of a system, spies are preferable to mocks, Spies help
+reuse code during the verification phase thereby reducing the size and improving
+the readability of tests.
+
+BusSpy and MessageBus are wrappers for IBus. However, there is a fundamental difference between them:
+BusSpy is part of the test code, while MessageBus is part of the production code. 
+This is an important distinction, because when using assertions in tests, you shouldn't rely on the production code.
+Your tests are the code's auditors. A good auditor doesn't simply take the word of the 
+person being audited at face value; they check and double-check everything.

@@ -1,5 +1,6 @@
 ﻿using CRM.AppServices;
 using CRM.Domain;
+using CRM.Infrastructure;
 
 namespace CRM;
 

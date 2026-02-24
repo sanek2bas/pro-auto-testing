@@ -1,6 +1,6 @@
-﻿using CRM.Infrastructure;
+﻿using CRM.Domain;
 
-namespace CRM.Domain;
+namespace CRM.Infrastructure;
 
 public interface IDomainLogger
 {
@@ -10,10 +10,12 @@ public interface IDomainLogger
 public class DomainLogger : IDomainLogger
 {
     private readonly ILogger logger;
+
     public DomainLogger(ILogger logger)
     {
         this.logger = logger;
     }
+
     public void UserTypeHasChanged(
         int userId, UserType oldType, UserType newType)
     {

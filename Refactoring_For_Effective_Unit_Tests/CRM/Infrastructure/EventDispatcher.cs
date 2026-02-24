@@ -1,6 +1,7 @@
 ﻿using CRM.AppServices;
+using CRM.Domain;
 
-namespace CRM.Domain;
+namespace CRM.Infrastructure;
 
 public class EventDispatcher
 {

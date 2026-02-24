@@ -11,6 +11,7 @@ public interface IBus
 //}
 
 //public class MessageBus : IMessageBus
+
 public class MessageBus
 {
     private readonly IBus bus;
