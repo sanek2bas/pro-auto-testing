@@ -65,3 +65,28 @@ BusSpy is part of the test code, while MessageBus is part of the production code
 This is an important distinction, because when using assertions in tests, you shouldn't rely on the production code.
 Your tests are the code's auditors. A good auditor doesn't simply take the word of the 
 person being audited at face value; they check and double-check everything.
+
+The rule that mocks should only be used in integration tests, not unit tests, follows from the 
+fundamental principle: separation of business logic and coordination. Your code should either interact 
+with out-of-process dependencies or be complex—but not both. This principle leads to the formation of two layers: 
+the domain model layer (which is responsible for complexity) and the controller layer (which is responsible for interactions).
+Domain model tests are categorized as unit tests; tests covering the controller are integration tests. 
+Since mocks are intended only for unmanaged dependencies, and controllers are the only code that works 
+with such dependencies, mocks should only be used when testing controllers—in integration tests.
+
+Not all unmanaged dependencies require the same level of backward compatibility. 
+If the exact structure of a message is unimportant and you only want to verify the existence of the message 
+and the information it contains, you can ignore the recommendation to verify interactions with unmanaged dependencies 
+at the boundaries of your system. A typical example of this is logging.
+
+Since mocks are intended only for unmanaged dependencies, and controllers should be the only part of 
+the code that works with such dependencies, mocks should only be used when testing controllers—in 
+integration tests. Do not use mocks in unit tests.
+
+The number of mocks used in a test is immaterial. It depends solely on the number 
+of unmanaged dependencies involved in the operation.
+
+Verify both the existence of expected mocks and the absence of unexpected calls to mocks.
+
+Use mocks only with types you own. Write custom adapters for third-party libraries that provide access to 
+unmanaged dependencies. Mock these adapters instead of the underlying types.
