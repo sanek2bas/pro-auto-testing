@@ -1,6 +1,6 @@
 ﻿using CRM.Domain;
 
-namespace CRM.AppServices;
+namespace CRM.AppServices.DB;
 
 public class Database
 {

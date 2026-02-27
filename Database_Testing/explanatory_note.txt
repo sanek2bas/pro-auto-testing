@@ -1,0 +1,7 @@
+Atomic updates are performed on an all-or-nothing basis. Each update in a group 
+of atomic updates must either complete completely or do nothing at all.
+Repositories are classes that facilitate access and modification of data in the database. 
+Transaction is a class that either fully commits or fully rolls back data updates. 
+This is a specialized class that uses database mechanisms to ensure the atomicity of data changes.
+The transaction becomes the link between the controller and the database,
+enabling atomic data modifications.

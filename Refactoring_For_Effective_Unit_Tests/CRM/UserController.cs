@@ -1,4 +1,5 @@
 ﻿using CRM.AppServices;
+using CRM.AppServices.DB;
 using CRM.Domain;
 using CRM.Infrastructure;
 
