@@ -5,3 +5,13 @@ Transaction is a class that either fully commits or fully rolls back data update
 This is a specialized class that uses database mechanisms to ensure the atomicity of data changes.
 The transaction becomes the link between the controller and the database,
 enabling atomic data modifications.
+
+Using repositories and transactions is a good way to prevent potential data integrity issues, 
+but there's a better way. The Transaction class can be updated to a unit of work.
+The main advantage of the unit of work pattern over a simple transaction is the ability to defer updates.
+Unlike transactions, a unit of work executes all updates at the end of a business operation, minimizing 
+the duration of the underlying transaction and increasing application throughput.
+Database transaction also implement the unit of work pattern.
+
+When it comes to transaction management in integration tests, the following principle applies: 
+database transactions or unit of work instances should not be reused across different sections of the test.
