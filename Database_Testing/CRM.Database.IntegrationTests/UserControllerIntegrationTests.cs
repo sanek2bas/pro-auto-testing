@@ -12,14 +12,14 @@ public class UserControllerIntegrationTests
     [Fact]
     public void Changing_Email_From_Corporate_To_Non_Corporate()
     {
+        //Arrange
+        User user;
+
         using (var context = new CrmContext(ConnectionString))
         {
-            // Arrange
-            var userRepository = 
-                new UserRepository(context);
-            var companyRepository =
-                new CompanyRepository(context);
-            var user = new User(0, "user@mycorp.com", UserType.Employee);
+            var userRepository = new UserRepository(context);
+            var companyRepository = new CompanyRepository(context);
+            user = new User(0, "user@mycorp.com", UserType.Employee);
             userRepository.SaveUser(user);
             var company = new Company("mycorp.com", 1);
             companyRepository.SaveCompany(company);

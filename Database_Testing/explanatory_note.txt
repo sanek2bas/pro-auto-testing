@@ -15,3 +15,14 @@ Database transaction also implement the unit of work pattern.
 
 When it comes to transaction management in integration tests, the following principle applies: 
 database transactions or unit of work instances should not be reused across different sections of the test.
+
+A shared database creates the problem of isolating integration tests from each other.
+To solve this problem, you need to:
+- run integration tests sequentially;
+- delete remaining data between test runs.
+Your tests should not depend on the state of the database. They should automatically
+ restore the database to the state they require.
+
+Cleaning up data at the beginning of a test is the best option.
+It's fast, doesn't lead to inconsistent behavior, and isn't prone to accidentally skipping the cleaning phase.
+You can add a base class for all integration tests and place a script for deleting test data in it.
