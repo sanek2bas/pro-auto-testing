@@ -1,11 +1,13 @@
-﻿using CRM.Infrastructure;
+﻿using CRM.Database.Infrastructure;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace CRM.IntegrationTests;
+namespace CRM.Database.IntegrationTests;
 
 public sealed class BusSpy : IBus
 {
     private List<string> sentMessages = new List<string>();
-
 
     public void Send(string message)
     {
@@ -20,8 +22,8 @@ public sealed class BusSpy : IBus
 
     public BusSpy WithEmailChangedMessage(int userId, string newEmail)
     {
-        string message = "Type: USER EMAIL CHANGED; " 
-                        + $"Id: {userId}; " 
+        string message = "Type: USER EMAIL CHANGED; "
+                        + $"Id: {userId}; "
                         + $"NewEmail: {newEmail}";
         Assert.Contains(sentMessages, x => x == message);
         return this;

@@ -1,10 +1,5 @@
 ﻿namespace CRM.AppServices;
 
-public interface IBus
-{
-    void Send(string message);
-}
-
 //public interface IMessageBus
 //{
 //    void SendEmailChangedMessage(int userId, string email);

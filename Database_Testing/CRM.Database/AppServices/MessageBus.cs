@@ -1,9 +1,6 @@
-﻿namespace CRM.Database.AppServices;
+﻿using CRM.Database.Infrastructure;
 
-public interface IBus
-{
-    void Send(string message);
-}
+namespace CRM.Database.AppServices;
 
 //public interface IMessageBus
 //{
