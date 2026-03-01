@@ -1,4 +1,6 @@
-﻿namespace CRM.AppServices;
+﻿using CRM.Infrastructure;
+
+namespace CRM.AppServices;
 
 //public interface IMessageBus
 //{
