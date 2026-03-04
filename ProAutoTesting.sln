@@ -86,6 +86,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database_Testing", "Database_Testing", "{699E4656-AB63-43BB-9B3E-948FF97F52BC}"
 	ProjectSection(SolutionItems) = preProject
 		Database_Testing\explanatory_note.txt = Database_Testing\explanatory_note.txt
+		compose.yml = compose.yml
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRM.Database.IntegrationTests", "Database_Testing\CRM.Database.IntegrationTests\CRM.Database.IntegrationTests.csproj", "{FB69653C-D41F-4755-82D1-83B703BADA82}"
