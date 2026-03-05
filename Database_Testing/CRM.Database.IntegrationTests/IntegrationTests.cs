@@ -5,7 +5,7 @@ namespace CRM.Database.IntegrationTests;
 
 public abstract class IntegrationTests
 {
-    private const string ConnectionString = "...";
+    protected const string ConnectionString = "";
 
     private void ClearDatabase()
     {

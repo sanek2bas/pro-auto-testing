@@ -14,7 +14,7 @@ public class UserRepository
     public User GetUserById(int userId)
     {
         return context.Users
-            .FirstOrDefault(x => x.UserId == userId);
+        .FirstOrDefault(x => x.UserId == userId);
     }
 
     public void SaveUser(User user)

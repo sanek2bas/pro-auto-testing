@@ -1,16 +1,24 @@
 ﻿using CRM.Database.Domain;
-using Microsoft.EntityFrameworkCore;
+using Npgsql;
 
 namespace CRM.Database.Infrastructure;
 
-public class CrmContext : DbContext
+public class CrmContext : IDisposable
 {
-    public CrmContext(string connection)
-    {
+    private readonly NpgsqlConnection connection;
 
+    public CrmContext(string connectionString)
+    {
+        connection = 
+            new NpgsqlConnection(connectionString);
     }
 
-    public DbSet<User> Users { get; set; }
+    //public IList<User> Users { get; set; }
 
-    public DbSet<Company> Companies { get; set; }
+    //public IList<Company> Companies { get; set; }
+
+    public void Dispose()
+    {
+        connection.Close();
+    }
 }
