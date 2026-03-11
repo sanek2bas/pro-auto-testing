@@ -85,8 +85,6 @@ integration tests. Do not use mocks in unit tests.
 
 The number of mocks used in a test is immaterial. It depends solely on the number 
 of unmanaged dependencies involved in the operation.
-
 Verify both the existence of expected mocks and the absence of unexpected calls to mocks.
-
 Use mocks only with types you own. Write custom adapters for third-party libraries that provide access to 
 unmanaged dependencies. Mock these adapters instead of the underlying types.
