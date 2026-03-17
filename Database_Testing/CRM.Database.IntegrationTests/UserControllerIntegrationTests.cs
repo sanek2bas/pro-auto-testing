@@ -8,10 +8,14 @@ namespace CRM.Database.IntegrationTests;
 public sealed class UserControllerIntegrationTests 
     : IntegrationTests
 {
+    public UserControllerIntegrationTests() 
+        : base() {}
+    
     [Fact]
     public void Changing_Email_From_Corporate_To_Non_Corporate()
     {
         //Arrange
+        ClearDatabase();
         User user;
 
         using (var context = new CrmContext(ConnectionString))
