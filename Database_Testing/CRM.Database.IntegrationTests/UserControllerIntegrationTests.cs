@@ -5,10 +5,9 @@ using Moq;
 
 namespace CRM.Database.IntegrationTests;
 
-public class UserControllerIntegrationTests
+public sealed class UserControllerIntegrationTests 
+    : IntegrationTests
 {
-    private string ConnectionString = "conncetion data";
-
     [Fact]
     public void Changing_Email_From_Corporate_To_Non_Corporate()
     {
@@ -48,6 +47,19 @@ public class UserControllerIntegrationTests
                 .WithEmailChangedMessage(user.UserId, "new@gmail.com");
             loggerMock.Verify(x => x.UserTypeHasChanged(
                 user.UserId, UserType.Employee, UserType.Customer), Times.Once);
+        }
+    }
+
+    private User CreateUser(
+        string email, UserType type, bool isEmailConfirmed)
+    {
+        using (var context = new CrmContext(ConnectionString))
+        {
+            var user = new User(0, email, type, isEmailConfirmed);
+            var repository = new UserRepository(context);
+            repository.SaveUser(user);
+            context.SaveChanges();
+            return user;
         }
     }
 }

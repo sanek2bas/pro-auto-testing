@@ -5,9 +5,10 @@ namespace CRM.Database.IntegrationTests;
 
 public abstract class IntegrationTests
 {
-    protected const string ConnectionString = "";
+    protected string ConnectionString = 
+        "Host=localhost;Port=8080;Username=postgres;Password=postgres;Database=crm";
 
-    private void ClearDatabase()
+    protected void ClearDatabase()
     {
         string query =
             "DELETE FROM dbo.[User];" +
