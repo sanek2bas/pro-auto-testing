@@ -1,4 +1,5 @@
 ﻿using CRM.Database.Domain;
+using Dapper;
 
 namespace CRM.Database.Infrastructure;
 
@@ -13,32 +14,41 @@ public class UserRepository
 
     public User GetUserById(int userId)
     {
-        User user = null;
-        string sql = "SELECT * FROM Users WHERE id = @id";
+        User user = default;
+        string readSql = 
+            @"SELECT * FROM Users 
+              WHERE id = @id";
         try
         {
-            var cmd = context.Connection.CreateCommand();
-            cmd.CommandText = sql;
-            var reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                int id = reader.GetInt32(0);
-                string email = reader.GetString(1);
-                int type = reader.GetInt32(2);
-                user = new User(id, email, (UserType)type);
-                break;
-            }
+            var connection = context.Connection;
+            var users = connection.Query<User>(
+                readSql, new { id = userId })
+                .ToList();
+            user = users.FirstOrDefault();
         }
         catch (Exception)
-        {
-        }
-
+        {}
         return user;
     }
 
     public void SaveUser(User user)
     {
-        return;
-        //context.Users.Update(user);
+        string insertSql = 
+            @"INSERT INTO Users (id, email, type) 
+              VALUES (@id, @email, @type)";
+        try
+        {
+            var connection = context.Connection;
+            connection.Execute(insertSql, 
+                new 
+                {
+                    id = user.UserId, 
+                    email = user.Email, 
+                    type = (int)user.Type
+                });
+        }
+        catch (Exception)
+        {
+        }
     }
 }

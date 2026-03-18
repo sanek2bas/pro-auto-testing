@@ -6,10 +6,10 @@ public class Company
 
     public int NumberOfEmployees { get; private set; }
 
-    public Company(string domain, int employess)
+    public Company(string domain, int numbers)
     {
         DomainName = domain;
-        NumberOfEmployees = employess;
+        NumberOfEmployees = numbers;
     }
 
     public void ChangeNumberOfEmployees(int delta)

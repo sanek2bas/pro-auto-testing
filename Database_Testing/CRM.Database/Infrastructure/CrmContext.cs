@@ -13,5 +13,6 @@ public class CrmContext(string connectionString) : IDisposable
     public void Dispose()
     {
         connection?.Close();
+        connection = null;
     }
 }
