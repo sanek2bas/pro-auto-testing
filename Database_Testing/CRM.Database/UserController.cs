@@ -38,7 +38,7 @@ public class UserController
         userRepository.SaveUser(user);
         eventDispatcher.Dispatch(user.DomainEvents);
         
-        context.SaveChanges();
+        //context.SaveChanges();
         return "OK";
     }
 }

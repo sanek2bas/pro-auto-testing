@@ -27,6 +27,7 @@ public sealed class UserControllerIntegrationTests
             var company = new Company("mycorp.com", 1);
             companyRepository.SaveCompany(company);
             context.SaveChanges();
+        }
 
             var busSpy = new BusSpy();
             var messageBus = new MessageBus(busSpy);
@@ -54,16 +55,16 @@ public sealed class UserControllerIntegrationTests
         }
     }
 
-    private User CreateUser(
-        string email, UserType type, bool isEmailConfirmed)
-    {
-        using (var context = new CrmContext(ConnectionString))
-        {
-            var user = new User(0, email, type, isEmailConfirmed);
-            var repository = new UserRepository(context);
-            repository.SaveUser(user);
-            context.SaveChanges();
-            return user;
-        }
-    }
+    //private User CreateUser(
+    //    string email, UserType type, bool isEmailConfirmed)
+    //{
+    //    using (var context = new CrmContext(ConnectionString))
+    //    {
+    //        var user = new User(0, email, type, isEmailConfirmed);
+    //        var repository = new UserRepository(context);
+    //        repository.SaveUser(user);
+    //        context.SaveChanges();
+    //        return user;
+    //    }
+    //}
 }

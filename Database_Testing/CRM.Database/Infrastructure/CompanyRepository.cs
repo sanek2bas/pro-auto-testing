@@ -13,11 +13,13 @@ public class CompanyRepository
 
     public Company GetCompany()
     {
-        return context.Companies.FirstOrDefault();
+        return null;
+        //return context.Companies.FirstOrDefault();
     }
 
     public void SaveCompany(Company company)
     {
-        context.Companies.Update(company);
+        return;
+        //context.Companies.Update(company);
     }
 }

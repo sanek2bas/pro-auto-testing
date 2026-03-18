@@ -1,4 +1,5 @@
 using Npgsql;
+using System.Reflection.Emit;
 
 namespace CRM.Database.IntegrationTests;
 
@@ -15,23 +16,25 @@ public abstract class IntegrationTests
     protected void ClearDatabase()
     {
         string deleteSql = @"
-            DELETE FROM User;
+            DELETE FROM Users;
             DELETE FROM Company;";
         
-        using var conn = new NpgsqlConnection(ConnectionString);
-        conn.Open();
-
-        using var deleteCmd = new NpgsqlCommand(deleteSql);
+        using var connection = 
+            new NpgsqlConnection(ConnectionString);
+        using var deleteCmd = 
+            new NpgsqlCommand(deleteSql, connection);
+        
+        connection.Open();
+        
         deleteCmd.ExecuteNonQuery();
 
-        conn.Close();
-        
+        connection.Close();        
     }
     
     private void CreateDatabase()
     {
-        string createTableUserSql = @"
-            DROP TABLE IF EXISTS User;
+        string createTableUsersSql = @"
+            DROP TABLE IF EXISTS Users;
             CREATE TABLE Users(
                 id INT PRIMARY KEY,
                 email VARCHAR(100),
@@ -43,15 +46,18 @@ public abstract class IntegrationTests
                 domain VARCHAR(100),
                 numbers INT);";
 
-        using var conn = new NpgsqlConnection(ConnectionString);
-        conn.Open();
+        using var connection = 
+            new NpgsqlConnection(ConnectionString);
+        using var usersTableCmd = 
+            new NpgsqlCommand(createTableUsersSql, connection);
+        using var companyTableCmd = 
+            new NpgsqlCommand(createTableCompanySql, connection);
+        
+        connection.Open();
 
-        using var userTableCmd = new NpgsqlCommand(createTableUserSql);
-        userTableCmd.ExecuteNonQuery();
-
-        using var companyTableCmd = new NpgsqlCommand(createTableCompanySql);
+        usersTableCmd.ExecuteNonQuery();        
         companyTableCmd.ExecuteNonQuery();
 
-        conn.Close();
+        connection.Close();
     }
 }

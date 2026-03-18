@@ -13,12 +13,32 @@ public class UserRepository
 
     public User GetUserById(int userId)
     {
-        return context.Users
-        .FirstOrDefault(x => x.UserId == userId);
+        User user = null;
+        string sql = "SELECT * FROM Users WHERE id = @id";
+        try
+        {
+            var cmd = context.Connection.CreateCommand();
+            cmd.CommandText = sql;
+            var reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                int id = reader.GetInt32(0);
+                string email = reader.GetString(1);
+                int type = reader.GetInt32(2);
+                user = new User(id, email, (UserType)type);
+                break;
+            }
+        }
+        catch (Exception)
+        {
+        }
+
+        return user;
     }
 
     public void SaveUser(User user)
     {
-        context.Users.Update(user);
+        return;
+        //context.Users.Update(user);
     }
 }
