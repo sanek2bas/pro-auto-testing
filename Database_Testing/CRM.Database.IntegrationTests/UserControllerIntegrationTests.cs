@@ -16,59 +16,98 @@ public sealed class UserControllerIntegrationTests
     {
         //Arrange
         ClearDatabase();
-        User user;
-
-        using (var context = new CrmContext(ConnectionString))
-        {
-            var userRepository = new UserRepository(context);
-            var companyRepository = new CompanyRepository(context);
-            user = new User(0, "user@mycorp.com", UserType.Employee);
-            userRepository.SaveUser(user);
-            var company = new Company(0, "mycorp.com", 1);
-            companyRepository.SaveCompany(company);
-        }
+        User user = CreateUser(
+            id: 0,
+            email: "user@mycorp.com", 
+            type: UserType.Employee);
+        CreateCompany(
+            domain: "mycorp.com",
+            numberOfEmployees: 1);
         
         var busSpy = new BusSpy();
         var messageBus = new MessageBus(busSpy);
         var loggerMock = new Mock<IDomainLogger>();
 
-        string result;
-        using (var context = new CrmContext(ConnectionString))
-        {
-            var sut = new UserController(
-                context, messageBus, loggerMock.Object);
-
-            // Act
-            result = sut.ChangeEmail(user.UserId, "new@gmail.com");
-        }
+        //Act
+        string result = Execute(
+            x => x.ChangeEmail(user.UserId, "new@gmail.com"),
+            messageBus,
+            loggerMock.Object);
 
         // Assert
         Assert.Equal("OK", result);
 
-        //User userFromDb = userRepository.GetUserById(user.UserId);
+        User userFromDb = QueryUser(user.UserId);
+        userFromDb.ShouldExist()
+                  .WithEmail("new@gmail.com")
+                  .WithType(UserType.Customer);
         //Assert.Equal("new@gmail.com", userFromDb.Email);
         //Assert.Equal(UserType.Customer, userFromDb.Type);
 
-        //Company companyFromDb = companyRepository.GetCompany();
+        Company companyFromDb = QueryCompany();
+        companyFromDb.ShouldExist()
+                     .WithNumberOfEmployees(0);
         //Assert.Equal(0, companyFromDb.NumberOfEmployees);
 
-        //busSpy.ShouldSendNumberOfMessages(1)
-        //    .WithEmailChangedMessage(user.UserId, "new@gmail.com");
-        //loggerMock.Verify(x => x.UserTypeHasChanged(
-        //    user.UserId, UserType.Employee, UserType.Customer), Times.Once);
-
+        busSpy.ShouldSendNumberOfMessages(1)
+              .WithEmailChangedMessage(user.UserId, "new@gmail.com");
+        loggerMock.Verify(x => x.UserTypeHasChanged(
+            user.UserId, UserType.Employee, UserType.Customer), Times.Once);
     }
 
-    //private User CreateUser(
-    //    string email, UserType type, bool isEmailConfirmed)
-    //{
-    //    using (var context = new CrmContext(ConnectionString))
-    //    {
-    //        var user = new User(0, email, type, isEmailConfirmed);
-    //        var repository = new UserRepository(context);
-    //        repository.SaveUser(user);
-    //        context.SaveChanges();
-    //        return user;
-    //    }
-    //}
+    private User CreateUser(
+        int id, string email, UserType type)
+    {
+        using var context = new CrmContext(ConnectionString);
+        {
+            var user = new User(id, email, type);
+            var repository = new UserRepository(context);
+            repository.SaveUser(user);
+            return user;
+        }
+    }
+
+    private User QueryUser(int userId)
+    {
+        using (var context = new CrmContext(ConnectionString))
+        {
+            var userRepository = new UserRepository(context);
+            User user = userRepository.GetUserById(userId);
+            return user;
+        }
+    }
+
+    private void CreateCompany(
+        string domain, int numberOfEmployees)
+    {
+        using (var context = new CrmContext(ConnectionString))
+        {
+            var companyRepository = new CompanyRepository(context);
+            var company = new Company(0, "mycorp.com", 1);
+            companyRepository.SaveCompany(company);
+        }
+    }
+
+    private Company QueryCompany()
+    {
+        using (var context = new CrmContext(ConnectionString))
+        {
+            var companyRepository = new CompanyRepository(context);
+            Company company = companyRepository.GetCompany();
+            return company;
+        }
+    }
+
+    private string Execute(
+        Func<UserController, string> func,
+        MessageBus messageBus, 
+        IDomainLogger logger)
+    {
+        using (var context = new CrmContext(ConnectionString))
+        {
+            var controller = 
+                new UserController(context, messageBus, logger);
+            return func(controller);
+        }
+    }
 }
