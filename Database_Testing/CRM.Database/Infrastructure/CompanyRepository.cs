@@ -33,7 +33,7 @@ public class CompanyRepository
     public void SaveCompany(Company company)
     {
         string insertSql =
-            @"UPDATE OR SEt Company (domain, numbers) 
+            @"UPDATE OR SET Company (domain, numbers) 
               VALUES (@domain, @numbers)";
         try
         {
