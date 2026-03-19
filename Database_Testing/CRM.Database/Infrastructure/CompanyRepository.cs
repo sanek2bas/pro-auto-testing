@@ -33,8 +33,10 @@ public class CompanyRepository
     public void SaveCompany(Company company)
     {
         string insertSql =
-            @"UPDATE OR SET Company (domain, numbers) 
-              VALUES (@domain, @numbers)";
+            @"INSERT INTO Company (id, domain, numbers) 
+              VALUES (0, @domain, @numbers)
+              ON CONFLICT (id) DO UPDATE SET 
+              (domain, numbers) = (EXCLUDED.domain, EXCLUDED.numbers)";
         try
         {
             var connection = context.Connection;

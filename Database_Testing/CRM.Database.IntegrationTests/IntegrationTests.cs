@@ -41,6 +41,7 @@ public abstract class IntegrationTests
         string createTableCompanySql = @"
             DROP TABLE IF EXISTS Company;
             CREATE TABLE Company(
+                id INT PRIMARY KEY,
                 domain VARCHAR(100),
                 numbers INT);";
 

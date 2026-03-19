@@ -33,9 +33,11 @@ public class UserRepository
 
     public void SaveUser(User user)
     {
-        string insertSql = 
+        string insertSql =
             @"INSERT INTO Users (id, email, type) 
-              VALUES (@id, @email, @type)";
+              VALUES (@id, @email, @type)
+              ON CONFLICT (id) DO UPDATE SET
+              (email, type) = (EXCLUDED.email, EXCLUDED.type)";
         try
         {
             var connection = context.Connection;

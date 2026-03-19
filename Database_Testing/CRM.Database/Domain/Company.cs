@@ -2,12 +2,15 @@
 
 public class Company
 {
-    public string DomainName { get; private set; }
+    public int Id { get; }
+
+    public string DomainName { get; }
 
     public int NumberOfEmployees { get; private set; }
 
-    public Company(string domain, int numbers)
+    public Company(int id, string domain, int numbers)
     {
+        Id = id;
         DomainName = domain;
         NumberOfEmployees = numbers;
     }

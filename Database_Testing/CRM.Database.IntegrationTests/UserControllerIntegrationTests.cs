@@ -24,7 +24,7 @@ public sealed class UserControllerIntegrationTests
             var companyRepository = new CompanyRepository(context);
             user = new User(0, "user@mycorp.com", UserType.Employee);
             userRepository.SaveUser(user);
-            var company = new Company("mycorp.com", 1);
+            var company = new Company(0, "mycorp.com", 1);
             companyRepository.SaveCompany(company);
         }
         
