@@ -1,4 +1,4 @@
-Unit testing private methods
+Unit_Testing_Private_Methods
 Sometimes private methods prove too complex, and testing them as part of the 
 observable behavior doesn't provide sufficient coverage. 
 The GenerateDescription() method is very simple: it returns a general description
@@ -18,3 +18,16 @@ In this particular example, the customer status isn't important to the
 production code; otherwise, this field would be public. The only thing 
 the production code cares about is the discount the customer will receive 
 after upgrading their status. Therefore, this is what needs to be tested.
+
+Domain_Knowledge_Leakage_Into_Tests
+Leaking domain knowledge into tests is another common anti-pattern. 
+It typically occurs in tests covering complex algorithms (class Calculator).
+WrongCalculatorTests - these tests duplicate the implementation of the algorithm
+from the production code.
+RightCalculatorTests - it may seem wrong at first, but coding the expected result 
+is a good practice in unit testing. It's important to calculate this result in 
+advance using something other than the code of the system under test 
+(ideally with the help of a subject matter expert). Of course, this only applies
+to fairly complex algorithms (we're all experts at adding two numbers). 
+Alternatively, if you're refactoring a legacy application, you can obtain these 
+results using the old code and then use them as expected values ​​in your tests.
