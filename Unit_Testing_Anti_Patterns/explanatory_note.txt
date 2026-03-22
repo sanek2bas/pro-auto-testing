@@ -1,0 +1,8 @@
+Unit testing private methods
+Sometimes private methods prove too complex, and testing them as part of the 
+observable behavior doesn't provide sufficient coverage. 
+The GenerateDescription() method is very simple: it returns a general description
+of the order. However, it uses a private GetPrice() method, which is much 
+more complex: it contains important business logic and requires thorough testing. 
+This logic is the missing abstraction. Instead of exposing the GetPrice method, 
+make this abstraction explicit.
