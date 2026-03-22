@@ -31,3 +31,15 @@ advance using something other than the code of the system under test
 to fairly complex algorithms (we're all experts at adding two numbers). 
 Alternatively, if you're refactoring a legacy application, you can obtain these 
 results using the old code and then use them as expected values ​​in your tests.
+
+Code_Pollution
+This is adding working code that is only needed for testing. In this example, 
+the Logger class is passed a parameter in its constructor that indicates whether
+the class is running in production. If so, a message is written to a file; 
+otherwise, nothing happens. This switch allows you to disable logging during 
+test runs. The problem with code pollution is that test code gets mixed in with 
+production code, increasing the cost of maintaining the latter. To avoid this
+anti-pattern, separate test code from production code. In the Logger example, 
+add the ILogger interface and create two implementations: a real one for 
+production and a dummy one for testing purposes. Then, refactor the Controller 
+class so that it receives the interface instead of a concrete class.
