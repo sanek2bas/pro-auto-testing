@@ -6,3 +6,15 @@ of the order. However, it uses a private GetPrice() method, which is much
 more complex: it contains important business logic and requires thorough testing. 
 This logic is the missing abstraction. Instead of exposing the GetPrice method, 
 make this abstraction explicit.
+
+Revealing_Private_State
+Another common anti-pattern is exposing private state for unit testing. 
+The rule here is the same as with private methods: don't expose state that
+you would otherwise prefer to keep private—test only observable behavior.
+How do I test the Promote() method? This method has the side effect of changing
+the _status field, but the field itself is private and therefore inaccessible 
+in tests. We need to look at how the production code uses this class. 
+In this particular example, the customer status isn't important to the 
+production code; otherwise, this field would be public. The only thing 
+the production code cares about is the discount the customer will receive 
+after upgrading their status. Therefore, this is what needs to be tested.
