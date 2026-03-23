@@ -67,3 +67,28 @@ Instead of mocking StatisticsCalculator, split the class into two (StatisticsCal
 and CustomerController2). The responsibility for interacting with the unmanaged
 dependency has been transferred to DeliveryGateway. Note that this gateway now 
 operates on an interface that can be used for mocking instead of a concrete class.
+
+Working_With_Time
+Many functional aspects of an application require access to the current date and time.
+Testing time-dependent functionality can lead to false positives: the time in 
+the action phase may not match the time in the verification phase.
+This dependency can be stabilized in three ways. One of these three methods
+is an anti-pattern; of the other two, one is preferable.
+DateTimeServer - time as an implicit context. In a time context, the implicit 
+context should be a special class that you use in your code instead of the 
+framework's built-in DateTime.Now property. As with logging functionality,
+using implicit context for time is also an anti-pattern. Implicit context pollutes 
+production code and complicates testing. Furthermore, a static field introduces
+a dependency shared by tests, causing these tests to fall into the realm of
+integration testing.
+DateTimeServer2 - time as an explicit dependency. It's more correct to explicitly 
+inject the time dependency (instead of accessing it through a static method 
+in an implicit context) - either as a service or as a value. Of these two options, 
+injecting time as a value (instead of a service) is preferable. Simple values 
+​​are easier to work with in production code and are also easier to replace with 
+stubs in tests. You likely won't always be able to inject time as a value,
+because dependency injection frameworks typically don't play well with value 
+objects. A good compromise is to inject time as a service at the beginning of the 
+business operation and then pass it as a value throughout the remainder of the
+operation. The controller receives an IDateTimeServer (a service), but then
+passes the DateTime value to the Inquiry domain class.
