@@ -1,3 +1,5 @@
+namespace SUT.UnitTests.Unit_Testing_Anti_Patterns;
+
 public class RightCalculatorTests
 {
     [Theory]

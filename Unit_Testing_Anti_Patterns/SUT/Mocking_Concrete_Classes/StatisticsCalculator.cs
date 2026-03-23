@@ -8,7 +8,7 @@ public class StatisticsCalculator
         return (totalWeight, totalCost);
     }
 
-    public List<DeliveryRecord> GetDeliveries(int customerId)
+    public virtual List<DeliveryRecord> GetDeliveries(int customerId)
     {
         /* Calling an out-of-process dependency to get a list of deliveries */
         return new List<DeliveryRecord>();
