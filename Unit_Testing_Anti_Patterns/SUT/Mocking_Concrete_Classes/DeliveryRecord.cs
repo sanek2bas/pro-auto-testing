@@ -1,0 +1,1 @@
+public record DeliveryRecord(double Weight, double Cost);

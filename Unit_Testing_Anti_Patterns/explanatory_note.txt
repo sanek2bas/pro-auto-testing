@@ -43,3 +43,27 @@ anti-pattern, separate test code from production code. In the Logger example,
 add the ILogger interface and create two implementations: a real one for 
 production and a dummy one for testing purposes. Then, refactor the Controller 
 class so that it receives the interface instead of a concrete class.
+
+Mocking_Concrete_Classes
+You can replace concrete classes with mocks and thus preserve some of the 
+functionality of the original classes, which can sometimes be useful. 
+However, this alternative has a significant drawback: it violates the 
+single responsibility principle.
+How can I test this controller? It can't be passed a real instance of 
+StatisticsCalculator because that instance accesses an unmanaged out-of-process 
+dependency. The unmanaged dependency should be replaced with a stub.
+At the same time, completely replacing StatisticsCalculator is also undesirable. 
+This class contains important computational functionality that should remain 
+unchanged. One way to deal with this dilemma is to mock the StatisticsCalculator
+class and override only the GetDeliveries() nethod, which can be done by declaring
+this method virtual (WrongCustomerControllerTests). Setting CallBase = true allows 
+the mock to retain the base class's behavior unless it's explicitly overridden. 
+This approach allows you to replace only part of the class while leaving the 
+rest as is. This is an anti-pattern.
+StatisticsCalculator combines two unrelated responsibilities: interacting with 
+an unmanaged dependency and calculating statistics. The domain logic is in the 
+Calculate() method. GetDeliveries() only collects input for this logic. 
+Instead of mocking StatisticsCalculator, split the class into two (StatisticsCalculator2
+and CustomerController2). The responsibility for interacting with the unmanaged
+dependency has been transferred to DeliveryGateway. Note that this gateway now 
+operates on an interface that can be used for mocking instead of a concrete class.
