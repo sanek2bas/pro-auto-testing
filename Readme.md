@@ -1,6 +1,6 @@
 ### Here are collected examples and short quotes about auto testing from two books:
 
-***Roy Osherove 'The art of unit testing with examples in C#' (2-nd edition)***
+***Roy Osherove "The art of unit testing with examples in C#" (2-nd edition)***
 
 ***Vladimir Khorikov "Unit testing: principles, practices and patterns"***
 
