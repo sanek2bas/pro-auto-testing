@@ -4,6 +4,7 @@
 
 ***Vladimir Khorikov "Unit testing: principles, practices and patterns"***
 
+---
 
 ### Здесь собраны примеры и небольшие цитаты про авто-тесты из двух книг:
 
